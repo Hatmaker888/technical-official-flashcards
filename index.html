@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weightlifting Officiating Flashcards</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+  :root{
+    --plate-red:#c8102e;
+    --plate-blue:#1a3a6b;
+    --steel:#0d1117;
+    --steel-2:#161b22;
+    --chalk:#f5f3ee;
+    --chalk-dim:#cfcabb;
+    --gold:#d9a441;
+    --line:#2a313c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Inter',sans-serif;
+    background:
+      radial-gradient(circle at 20% 0%, #1c2433 0%, transparent 55%),
+      radial-gradient(circle at 85% 100%, #241a22 0%, transparent 50%),
+      var(--steel);
+    color:var(--chalk);
+    min-height:100vh;
+    padding:24px 16px 64px;
+  }
+  .wrap{max-width:760px;margin:0 auto}
+
+  header{margin-bottom:22px}
+  .eyebrow{
+    font-family:'Oswald',sans-serif;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    font-size:.72rem;
+    color:var(--gold);
+    margin-bottom:6px;
+  }
+  h1{
+    font-family:'Oswald',sans-serif;
+    font-weight:700;
+    font-size:clamp(1.8rem,5vw,2.6rem);
+    line-height:1.02;
+    text-transform:uppercase;
+  }
+  h1 .bar{color:var(--plate-red)}
+  .sub{color:var(--chalk-dim);font-size:.9rem;margin-top:8px;max-width:54ch}
+
+  /* deck selector */
+  .decks{display:flex;gap:10px;margin:22px 0 14px;flex-wrap:wrap}
+  .deck-btn{
+    flex:1 1 0;
+    min-width:160px;
+    text-align:left;
+    background:var(--steel-2);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:14px 16px;
+    cursor:pointer;
+    color:var(--chalk);
+    transition:.18s;
+  }
+  .deck-btn:hover{border-color:var(--gold);transform:translateY(-2px)}
+  .deck-btn.active{border-color:var(--plate-red);background:linear-gradient(180deg,#1d2230,#161b22)}
+  .deck-btn .lvl{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.7rem;color:var(--gold)}
+  .deck-btn.active .lvl{color:var(--plate-red)}
+  .deck-btn .nm{font-family:'Oswald',sans-serif;font-size:1.15rem;font-weight:600;margin-top:3px}
+  .deck-btn .ct{font-size:.78rem;color:var(--chalk-dim);margin-top:4px}
+
+  /* meta row */
+  .meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:10px 2px 14px}
+  .progress{flex:1;height:6px;background:var(--line);border-radius:99px;overflow:hidden}
+  .progress > span{display:block;height:100%;background:linear-gradient(90deg,var(--plate-red),var(--gold));width:0;transition:.3s}
+  .count{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.1em;color:var(--chalk-dim);white-space:nowrap}
+
+  /* card */
+  .card-scene{perspective:1600px}
+  .card{
+    position:relative;
+    width:100%;
+    min-height:340px;
+    cursor:pointer;
+    transform-style:preserve-3d;
+    transition:transform .55s cubic-bezier(.2,.7,.2,1);
+  }
+  .card.flipped{transform:rotateY(180deg)}
+  .face{
+    position:absolute;inset:0;
+    backface-visibility:hidden;
+    border-radius:20px;
+    padding:30px 28px;
+    display:flex;flex-direction:column;
+    border:1px solid var(--line);
+  }
+  .front{
+    background:linear-gradient(160deg,#1b2230 0%, #11151c 100%);
+  }
+  .back{
+    background:linear-gradient(160deg,#241319 0%, #14171d 100%);
+    transform:rotateY(180deg);
+    border-color:#3a2730;
+  }
+  .tag{
+    align-self:flex-start;
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:.68rem;
+    padding:4px 10px;
+    border-radius:99px;
+    border:1px solid var(--line);
+    color:var(--chalk-dim);
+    margin-bottom:18px;
+  }
+  .back .tag{color:var(--gold);border-color:#4a3320}
+  .q{
+    font-family:'Oswald',sans-serif;
+    font-weight:500;
+    font-size:clamp(1.25rem,3.4vw,1.7rem);
+    line-height:1.18;
+  }
+  .a{font-size:1rem;line-height:1.55;color:var(--chalk)}
+  .a strong{color:var(--gold);font-weight:600}
+  .a ul{margin:8px 0 0 18px;display:flex;flex-direction:column;gap:5px}
+  .hint{margin-top:auto;padding-top:18px;font-size:.74rem;color:var(--chalk-dim);letter-spacing:.04em}
+  .ref{margin-top:14px;font-size:.72rem;color:#7d8aa0;font-style:italic}
+
+  /* controls */
+  .controls{display:flex;gap:10px;margin-top:18px}
+  .btn{
+    flex:1;
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-size:.85rem;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid var(--line);
+    background:var(--steel-2);
+    color:var(--chalk);
+    cursor:pointer;
+    transition:.16s;
+  }
+  .btn:hover:not(:disabled){border-color:var(--gold)}
+  .btn:disabled{opacity:.35;cursor:not-allowed}
+  .btn.flip{background:var(--plate-red);border-color:var(--plate-red);flex:1.4}
+  .btn.flip:hover{filter:brightness(1.1)}
+  .shuffle{margin-top:10px;width:100%;background:transparent;border:1px dashed var(--line);color:var(--chalk-dim)}
+  .shuffle:hover{color:var(--gold);border-color:var(--gold)}
+
+  footer{margin-top:26px;font-size:.72rem;color:#6b7686;line-height:1.5}
+  kbd{background:var(--steel-2);border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:.7rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Technical Official Study Set</div>
+    <h1>Weightlifting <span class="bar">Officiating</span> Cards</h1>
+    <p class="sub">Tap a card to flip. Beginner covers USA Weightlifting referee basics and running a safe meet; Intermediate covers IWF TCRR rules from your program materials.</p>
+  </header>
+
+  <div class="decks" id="decks"></div>
+
+  <div class="meta">
+    <div class="progress"><span id="bar"></span></div>
+    <div class="count" id="count">1 / 1</div>
+  </div>
+
+  <div class="card-scene">
+    <div class="card" id="card">
+      <div class="face front">
+        <span class="tag" id="ftag">Question</span>
+        <div class="q" id="q"></div>
+        <div class="hint">Tap card or press <kbd>Space</kbd> to reveal</div>
+      </div>
+      <div class="face back">
+        <span class="tag">Answer</span>
+        <div class="a" id="a"></div>
+        <div class="ref" id="ref"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn" id="prev">‹ Prev</button>
+    <button class="btn flip" id="flip">Flip</button>
+    <button class="btn" id="next">Next ›</button>
+  </div>
+  <button class="shuffle" id="shuffle">⤮ Shuffle deck</button>
+
+  <footer>
+    Keys: <kbd>←</kbd>/<kbd>→</kbd> navigate · <kbd>Space</kbd> flip · <kbd>S</kbd> shuffle.<br><br>
+    <strong>Unofficial study aid — verify against the current IWF TCRR and USAW/BARS materials before relying on it for certification or competition.</strong> Rule clause numbers and timing/figure details may change between editions.<br><br>
+    Sources: USA Weightlifting Technical Officials pages &amp; TO Advancement Policy (Jan 2025); IWF TCRR 2025 (as of 05 Nov 2025) &amp; IWF TO Uniform Guidelines (TCRR 7.2.3).<br><br>
+    Provided for referee practice by [Your WSO name]. Not an official publication of USA Weightlifting or the IWF.
+  </footer>
+</div>
+
+<script>
+const DECKS = {
+  beginner: {
+    level:"Beginner",
+    name:"Officiating Basics",
+    blurb:"Get certified & run a safe meet",
+    cards:[
+      {q:"What two memberships/credentials must you hold to officiate any USAW-sanctioned competition?",
+       a:"A <strong>current USA Weightlifting membership</strong> and <strong>U.S. Center for SafeSport training in good standing</strong>. Meet directors must verify a referee's eligibility before the meet.",
+       ref:"USAW Technical Officials"},
+      {q:"What is the entry-level referee rank, and where can you officiate with it?",
+       a:"The <strong>Local / WSO (Weightlifting State Organization) referee</strong> — earned by passing the Local Weightlifting Committee (LWC) Referee Exam through your BARS profile. It qualifies you to officiate local and state-level sanctioned meets.",
+       ref:"USAW Referee pathway"},
+      {q:"Name the USAW → international referee advancement ladder, lowest to highest.",
+       a:"<ul><li>Local / WSO Referee</li><li>National Technical Official</li><li>IWF Category 2 ITO</li><li>IWF Category 1 ITO</li></ul>",
+       ref:"USAW TO Advancement Policy"},
+      {q:"How long must you be a WSO Technical Official before applying for National TO?",
+       a:"At least <strong>24 months</strong> prior to the application date, plus the national and additional competition session requirements.",
+       ref:"USAW TO Advancement Policy 2025"},
+      {q:"What score must a National TO candidate hit on both the practical and written exams?",
+       a:"<strong>90% or higher</strong> on each. IWF Category 1 ITO candidates need <strong>95%</strong>.",
+       ref:"USAW TO Advancement Policy 2025"},
+      {q:"If a candidate fails the practical or written exam, how long must they wait to retake it?",
+       a:"At least <strong>six (6) months</strong> before testing again (per IWF TCRR 7.3.20). Sessions already worked still count toward the new application.",
+       ref:"IWF TCRR 7.3.20"},
+      {q:"What are the two competition lifts, and in what order are they always contested?",
+       a:"<strong>1) The Snatch</strong>, then <strong>2) The Clean &amp; Jerk</strong> — always that sequence. Both are done with two hands.",
+       ref:"IWF TCRR 2.1"},
+      {q:"How many attempts does an athlete get in each lift?",
+       a:"A maximum of <strong>three (3) attempts</strong> in the Snatch and three in the Clean &amp; Jerk.",
+       ref:"IWF TCRR 2.1"},
+      {q:"How is an athlete's Total calculated, and what's required to register one?",
+       a:"Total = <strong>best Snatch + best Clean &amp; Jerk</strong>. A Total is only recorded if the athlete makes <strong>at least one successful Snatch and one successful Clean &amp; Jerk</strong>.",
+       ref:"IWF TCRR 2.1"},
+      {q:"How many referees decide a lift, and how is the decision reached?",
+       a:"<strong>Three referees</strong> (center + two side). A lift is declared <strong>good lift</strong> on a <strong>majority (2 of 3)</strong> white light decision; a majority of red lights means no lift.",
+       ref:"Officiating basics"},
+      {q:"What does the center referee signal control, and what command ends the lift?",
+       a:"The center referee gives the <strong>\"Down\"</strong> signal (light + audible) once the lift is held motionless and under control. The athlete must wait for it before lowering the bar.",
+       ref:"Officiating basics"},
+      {q:"Name three core safety / setup checks before lifting starts at a meet.",
+       a:"<ul><li><strong>Equipment check</strong> — bar, plates, collars, platform secure</li><li><strong>Weigh-in</strong> verified against entries</li><li><strong>Loading &amp; collars</strong> confirmed correct before each attempt</li></ul> Other TO roles include Technical Controller, Marshal, Timekeeper, Speaker, and Competition Secretary.",
+       ref:"USAW Referee Protocols"},
+      {q:"What is the role of the Technical Controller?",
+       a:"Ensures the <strong>platform, barbell, and equipment meet specifications</strong> and that loading is correct and safe throughout the session — a key safety backstop supporting the referees.",
+       ref:"USAW Referee Protocols"},
+      {q:"What is the time limit an athlete normally has to start an attempt once called?",
+       a:"<strong>60 seconds</strong> from when the bar is loaded and the athlete is called — extended to <strong>2 minutes</strong> if they are following themselves (back-to-back attempts).",
+       ref:"Officiating basics"},
+      {q:"What's the minimum jump in weight between attempts?",
+       a:"<strong>1 kg</strong> (the barbell can only go up, never down, during the competition).",
+       ref:"Officiating basics"},
+    ]
+  },
+  intermediate: {
+    level:"Intermediate",
+    name:"IWF TCRR Rules",
+    blurb:"From your program folder",
+    cards:[
+      {q:"How many bodyweight categories exist for Senior/Junior men and women, and through what date are the CURRENT categories used?",
+       a:"<strong>Eight (8) categories</strong> each. The current sets remain in use until the new categories take effect <strong>from 01 August 2026</strong>.",
+       ref:"IWF TCRR 1.2.1 / 1.2.2 (mod. 05 Nov 2025)"},
+      {q:"List the current Senior/Junior MEN categories (pre-Aug 2026).",
+       a:"<strong>60, 65, 71, 79, 88, 94, 110, +110 kg</strong>.",
+       ref:"IWF TCRR 1.2.1"},
+      {q:"List the MEN categories effective 01 August 2026.",
+       a:"<strong>60, 65, 70, 75, 85, 95, 110, +110 kg</strong>. (71→70, 79→75, 88→85, 94→95.)",
+       ref:"IWF TCRR 1.2.1"},
+      {q:"List the current Senior/Junior WOMEN categories (pre-Aug 2026).",
+       a:"<strong>48, 53, 58, 63, 69, 77, 86, +86 kg</strong>.",
+       ref:"IWF TCRR 1.2.2"},
+      {q:"List the WOMEN categories effective 01 August 2026.",
+       a:"<strong>49, 53, 57, 61, 69, 77, 86, +86 kg</strong>. (48→49, 58→57, 63→61; the top four are unchanged.)",
+       ref:"IWF TCRR 1.2.2"},
+      {q:"What are the YOUTH WOMEN categories from 01 August 2026?",
+       a:"<strong>45, 49, 53, 57, 61, 69, 77, +77 kg</strong>.",
+       ref:"IWF TCRR 1.2.4"},
+      {q:"What are the YOUTH MEN categories from 01 August 2026?",
+       a:"<strong>55, 60, 65, 70, 75, 85, 95, +95 kg</strong>.",
+       ref:"IWF TCRR 1.2.3"},
+      {q:"How many bodyweight categories are set for the LA 2028 Olympic Games, and what's their status?",
+       a:"<strong>Six (6) per gender</strong>, but final categories are <strong>to be defined later by the IOC</strong>. Listed: Men 65/75/85/95/110/+110; Women 53/61/69/77/86/+86 kg.",
+       ref:"IWF TCRR 1.2.5"},
+      {q:"In a Total-only event, what happens to an athlete who fails all three Snatch attempts?",
+       a:"They are <strong>eliminated and cannot continue to the Clean &amp; Jerk</strong>, and <strong>no Total is registered</strong>.",
+       ref:"IWF TCRR 2.1"},
+      {q:"Can an athlete still be classified in individual lifts without achieving a Total?",
+       a:"Yes — in events where medals/rankings are awarded separately for the Snatch and Clean &amp; Jerk, athletes are <strong>still classified for the individual lifts</strong> even with no Total.",
+       ref:"IWF TCRR 2.1"},
+      {q:"When is an athlete deemed to have \"competed\"?",
+       a:"When they <strong>attempt at least one lift on the platform</strong> (Snatch or C&amp;J), successful or not. In Total-only events, attempting at least one Snatch counts.",
+       ref:"IWF TCRR 2.1"},
+      {q:"What is the official IWF Technical Official uniform color and code?",
+       a:"<strong>Navy blue, colour code PMS 2767</strong> — for the jacket and trousers/skirt, worn with a white shirt and IWF tie/scarf.",
+       ref:"IWF TCRR 7.2.3"},
+      {q:"Where are the two IWF TO badges worn on the uniform?",
+       a:"The <strong>metal TO badge is pinned on the left lapel</strong> of the jacket; the <strong>sewn TO badge sits on the left breast pocket</strong>.",
+       ref:"IWF TCRR 7.2.3"},
+      {q:"For women officials, what hosiery is specified with trousers vs. with a skirt?",
+       a:"With <strong>trousers</strong>: black / dark blue / skin-colour <strong>socks</strong>. With a <strong>skirt</strong>: black / dark blue / skin-colour <strong>stockings</strong>. Black dress shoes either way.",
+       ref:"IWF TCRR 7.2.3"},
+      {q:"What footwear/accessory items are specified for men officials?",
+       a:"<strong>Black / dark blue belt</strong>, <strong>black / dark blue socks</strong>, and <strong>black dress shoes</strong>, with the navy suit, white shirt, and IWF tie.",
+       ref:"IWF TCRR 7.2.3"},
+    ]
+  },
+  advJury: {
+    level:"Advanced",
+    name:"Jury & Protests",
+    blurb:"Jury authority, reversals, VPT",
+    cards:[
+      {q:"At an IWF event, how many members form the Jury and what level must they hold?",
+       a:"The Jury is composed of <strong>three (3) to five (5) members</strong>, one of whom is the President. All members must be <strong>IWF Category 1 or Category 2</strong> officials.",
+       ref:"IWF TCRR 7.4.1 / 7.4.3"},
+      {q:"What is the Jury's core function during competition?",
+       a:"To <strong>control the Field of Play (FOP)</strong> and ensure the TCRR are being correctly followed and applied. The Jury independently adjudicates each lift using its own control unit (red/white buttons).",
+       ref:"IWF TCRR 7.4.2"},
+      {q:"When VPT is NOT in use, on what basis can the Jury reverse a referees' decision?",
+       a:"Only when the Jury <strong>unanimously</strong> judges the referees' decision to be technically incorrect. The Jury may first call the referees to explain.",
+       ref:"IWF TCRR 7.5 (VPT off)"},
+      {q:"Walk through the reversal procedure when the Jury disagrees with the referees.",
+       a:"<ul><li>President orders the competition <strong>stopped</strong></li><li>Referees concerned are called for an <strong>explanation</strong></li><li>If explanation <strong>accepted</strong> (Jury unanimous) → no action</li><li>If <strong>not accepted</strong> (Jury unanimous) → decision <strong>reversed</strong></li></ul> The reversal and its reason are communicated to Speaker, athlete/Team Official, and Marshal via the Technical Controller, then announced.",
+       ref:"IWF TCRR 2025 (Jury reversal)"},
+      {q:"With VPT in use, what vote does a 5-member Jury vs. a 3-member Jury need to change a decision?",
+       a:"A <strong>5-member Jury needs a majority</strong> vote to reverse/change a decision; a <strong>3-member Jury must be unanimous</strong> to reverse or amend based on the VPT.",
+       ref:"IWF TCRR 7.5.7"},
+      {q:"What is the device used to challenge a referees' decision, and who reviews it?",
+       a:"A <strong>challenge card</strong> presented by the athlete/coach. The <strong>Jury reviews</strong> the decision (usually via VPT) and either <strong>confirms or overturns</strong> the referees' call.",
+       ref:"Jury procedure"},
+      {q:"Can the Jury replace a Technical Official mid-competition?",
+       a:"Yes — after a <strong>first warning</strong>, the Jury may by <strong>unanimous vote</strong> replace any TO whose decisions prove them to be incompetent.",
+       ref:"IWF TCRR 7.4.4"},
+      {q:"What two other powers does the Jury hold over conduct and equipment loading?",
+       a:"<ul><li>Power to <strong>reprimand/sanction</strong> an athlete or Team Official for misconduct</li><li>Decides whether small discs are loaded <strong>inside or outside the collars</strong> (friction/movement consideration)</li></ul>",
+       ref:"Jury procedure"},
+      {q:"If there is a loading error or a serious Speaker announcement error, who decides on a re-attempt?",
+       a:"The <strong>Jury</strong> decides whether or not to grant the athlete <strong>another attempt</strong>.",
+       ref:"Jury procedure"},
+      {q:"An athlete touches the platform with footwear AFTER a successful attempt is signaled. Reversal?",
+       a:"No — the <strong>referees' good-lift decision is NOT reversed</strong>. The Jury issues a <strong>warning</strong>; if the athlete repeats it on a subsequent lift, that lift is a <strong>No Lift</strong>.",
+       ref:"IWF TCRR 2025"},
+      {q:"Who may work as a Technical Official at an IWF Event, and what conflict restriction applies?",
+       a:"Only <strong>International Technical Officials</strong>. Selected TOs <strong>must not coach or assist any athlete</strong> during the event.",
+       ref:"IWF TCRR 7.x General Provisions"},
+      {q:"When may the Jury remove jackets/ties, and when must they always be worn?",
+       a:"At the Jury table the <strong>jacket and/or tie/scarf may be removed</strong>, but they must <strong>always be worn for the introduction and the Victory Ceremony</strong> (unless the organising committee states otherwise).",
+       ref:"IWF TCRR 7.2.3 (uniform)"},
+      {q:"What report does the Jury President produce at an IWF event, and to whom?",
+       a:"A <strong>written report</strong> at the end of competition noting special occurrences and feedback, submitted to the <strong>Technical Committee Chairperson and/or IWF President</strong>.",
+       ref:"Jury procedure"},
+    ]
+  },
+  advInfractions: {
+    level:"Advanced",
+    name:"Technical Infractions",
+    blurb:"No-lift causes, Snatch & C&J",
+    cards:[
+      {q:"In the Snatch, how must the barbell travel from platform to overhead?",
+       a:"Gripped palms-down and lifted in a <strong>single continuous movement</strong> to full arm extension overhead, while splitting or bending the legs. <strong>Stopping the upward movement (pulling from the hang) is a No Lift.</strong>",
+       ref:"IWF TCRR 2.x Snatch"},
+      {q:"List the No-Lift causes related to arm/elbow movement that apply to both lifts.",
+       a:"<ul><li><strong>Pause during the extension of the arms</strong></li><li><strong>Bending and extending the elbows during the recovery</strong> (re-press / press-out)</li><li><strong>Uneven or incomplete extension</strong> of the arms at completion</li></ul>",
+       ref:"IWF TCRR incorrect movements"},
+      {q:"What body-contact faults make a lift a No Lift?",
+       a:"<ul><li>Touching the platform with <strong>any part of the body other than the feet</strong></li><li>In the Clean: <strong>touching the thighs or knees with the elbows or upper arms</strong></li></ul>",
+       ref:"IWF TCRR incorrect movements"},
+      {q:"In the Clean, where may the barbell rest, and what must NOT happen before the final position?",
+       a:"It rests on the <strong>clavicles, the chest above the nipples, or fully bent arms</strong>. The barbell <strong>must not touch the chest before</strong> reaching the final racked position.",
+       ref:"IWF TCRR 2.x Clean"},
+      {q:"After the Clean and before the Jerk, what THREE adjustments is the athlete allowed (and what is it NOT)?",
+       a:"It does <strong>not</strong> grant an extra jerk, but allows: <strong>a)</strong> withdraw thumbs / unhook, <strong>b)</strong> lower the barbell if placed too high (impeding breathing/causing pain), <strong>c)</strong> change the grip width.",
+       ref:"IWF — The Two Lifts"},
+      {q:"What faults at the completion of the lift (lower body) cause a No Lift?",
+       a:"<ul><li><strong>Failing to fully extend the knees</strong> at completion</li><li>Feet not returned to the <strong>same line, parallel to the trunk and barbell</strong></li></ul>",
+       ref:"IWF TCRR incorrect movements"},
+      {q:"What must the athlete do before lowering the bar, and what ends the attempt legally?",
+       a:"Hold the weight <strong>motionless</strong>, arms and legs fully extended, feet on the same line — then <strong>wait for the referees' \"Down\" signal</strong>. The referees signal as soon as the athlete is motionless in all parts of the body.",
+       ref:"IWF TCRR 2.x final position"},
+      {q:"Is 'hooking' (hook grip) permitted? Define it.",
+       a:"<strong>Yes.</strong> Hooking is covering the thumb with the other fingers of the same hand at the moment of gripping the barbell.",
+       ref:"IWF TCRR 2.x"},
+      {q:"What barbell-motion fault is a No Lift even if the bar reaches overhead?",
+       a:"<strong>Any deliberate oscillation of the barbell to gain advantage</strong> — the athlete must control the bar to a motionless finish.",
+       ref:"IWF TCRR incorrect movements"},
+      {q:"What substances are permitted vs. forbidden on the athlete?",
+       a:"<strong>Permitted:</strong> chalk (magnesium carbonate). <strong>Forbidden:</strong> grease, oil, water, talcum, or any lubricant on the thighs — the athlete is ordered to remove it immediately.",
+       ref:"IWF TCRR 2.4.7"},
+      {q:"Who alone may move the loaded barbell on the platform during competition?",
+       a:"Only the <strong>athlete or the loaders</strong>. A coach or club official may <strong>not</strong> move, adjust, or clean the barbell.",
+       ref:"IWF TCRR 2.4.8"},
+      {q:"Is a press-out the same fault in both Snatch and Jerk? What's the underlying principle?",
+       a:"Yes — a <strong>press-out</strong> (continuing to press the bar after the arms pause/bend) is a No Lift in both. Principle: arms must reach <strong>full extension in one motion</strong> without re-bending or pausing.",
+       ref:"IWF TCRR incorrect movements"},
+    ]
+  }
+};
+
+let deckKey = "beginner";
+let order = [];
+let idx = 0;
+
+const el = id => document.getElementById(id);
+
+function buildDeckButtons(){
+  const c = el("decks");
+  c.innerHTML = "";
+  Object.entries(DECKS).forEach(([key,d])=>{
+    const b = document.createElement("button");
+    b.className = "deck-btn" + (key===deckKey?" active":"");
+    b.innerHTML = `<div class="lvl">${d.level}</div><div class="nm">${d.name}</div><div class="ct">${d.cards.length} cards · ${d.blurb}</div>`;
+    b.onclick = ()=>{ deckKey=key; resetDeck(); buildDeckButtons(); };
+    c.appendChild(b);
+  });
+}
+
+function resetDeck(){
+  order = DECKS[deckKey].cards.map((_,i)=>i);
+  idx = 0;
+  render();
+}
+
+function render(){
+  const deck = DECKS[deckKey];
+  const card = deck.cards[order[idx]];
+  el("card").classList.remove("flipped");
+  setTimeout(()=>{
+    el("q").innerHTML = card.q;
+    el("a").innerHTML = card.a;
+    el("ref").textContent = card.ref ? "Ref: " + card.ref : "";
+    el("ftag").textContent = deck.level + " · Question";
+  }, el("card").classList.contains("flipped")?160:0);
+  el("count").textContent = `${idx+1} / ${order.length}`;
+  el("bar").style.width = `${((idx+1)/order.length)*100}%`;
+  el("prev").disabled = idx===0;
+  el("next").disabled = idx===order.length-1;
+}
+
+function flip(){ el("card").classList.toggle("flipped"); }
+function next(){ if(idx<order.length-1){idx++;render();} }
+function prev(){ if(idx>0){idx--;render();} }
+function shuffle(){
+  for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}
+  idx=0;render();
+}
+
+el("card").onclick = flip;
+el("flip").onclick = (e)=>{e.stopPropagation();flip();};
+el("next").onclick = next;
+el("prev").onclick = prev;
+el("shuffle").onclick = shuffle;
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="ArrowRight") next();
+  else if(e.key==="ArrowLeft") prev();
+  else if(e.key===" "){e.preventDefault();flip();}
+  else if(e.key.toLowerCase()==="s") shuffle();
+});
+
+buildDeckButtons();
+resetDeck();
+</script>
+</body>
+</html>
