@@ -152,6 +152,8 @@
   .shuffle:hover{color:var(--gold);border-color:var(--gold)}
 
   footer{margin-top:26px;font-size:.72rem;color:#6b7686;line-height:1.5}
+  footer a{color:var(--gold);text-decoration:none;border-bottom:1px solid #4a3320}
+  footer a:hover{color:#f0c060}
   kbd{background:var(--steel-2);border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:.7rem}
 </style>
 </head>
@@ -160,7 +162,7 @@
   <header>
     <div class="eyebrow">Technical Official Study Set</div>
     <h1>Weightlifting <span class="bar">Officiating</span> Cards</h1>
-    <p class="sub">Tap a card to flip. Beginner covers USA Weightlifting referee basics and running a safe meet; Intermediate covers IWF TCRR rules from your program materials.</p>
+    <p class="sub">Tap a card to flip. Six decks span Beginner officiating basics through Expert competition mechanics, plus a dedicated USAW Amendments deck flagging where US rules differ from the IWF TCRR.</p>
   </header>
 
   <div class="decks" id="decks"></div>
@@ -195,7 +197,14 @@
   <footer>
     Keys: <kbd>←</kbd>/<kbd>→</kbd> navigate · <kbd>Space</kbd> flip · <kbd>S</kbd> shuffle.<br><br>
     <strong>Unofficial study aid — verify against the current IWF TCRR and USAW/BARS materials before relying on it for certification or competition.</strong> Rule clause numbers and timing/figure details may change between editions.<br><br>
-    Sources: USA Weightlifting Technical Officials pages &amp; TO Advancement Policy (Jan 2025); IWF TCRR 2025 (as of 05 Nov 2025) &amp; IWF TO Uniform Guidelines (TCRR 7.2.3).<br><br>
+    <strong>Official sources &amp; further reading:</strong>
+    <ul style="margin:8px 0 0 18px;line-height:1.7">
+      <li>USA Weightlifting — Technical Officials: <a href="https://www.usaweightlifting.org/referees" target="_blank" rel="noopener">usaweightlifting.org/referees</a></li>
+      <li>Referee Definitions &amp; Advancement: <a href="https://www.usaweightlifting.org/referees/referee-and-competition-secretary-information" target="_blank" rel="noopener">usaweightlifting.org/referees/referee-and-competition-secretary-information</a></li>
+      <li>Referee &amp; Competition Secretary Protocols: <a href="https://www.usaweightlifting.org/referees/referee-protocols" target="_blank" rel="noopener">usaweightlifting.org/referees/referee-protocols</a></li>
+      <li>IWF Rules &amp; current TCRR: <a href="https://iwf.sport/weightlifting_/rules/" target="_blank" rel="noopener">iwf.sport/weightlifting_/rules</a></li>
+    </ul>
+    <span style="display:block;margin-top:8px">Where USAW rules differ from the IWF TCRR, the USAW amendment governs at US-sanctioned competitions. Cards are labeled accordingly. Bodyweight cards use the categories effective 01 August 2026.</span><br>
     Provided for referee practice by the Pacific Northwest Weightlifting State Organization (PNW WSO). Not an official publication of USA Weightlifting or the IWF.
   </footer>
 </div>
@@ -235,8 +244,8 @@ const DECKS = {
        a:"Total = <strong>best Snatch + best Clean &amp; Jerk</strong>. A Total is only recorded if the athlete makes <strong>at least one successful Snatch and one successful Clean &amp; Jerk</strong>.",
        ref:"IWF TCRR 2.1"},
       {q:"How many referees decide a lift, and how is the decision reached?",
-       a:"<strong>Three referees</strong> (center + two side). A lift is declared <strong>good lift</strong> on a <strong>majority (2 of 3)</strong> white light decision; a majority of red lights means no lift.",
-       ref:"Officiating basics"},
+       a:"<strong>Three referees</strong> (center + two side). A lift is declared <strong>good lift</strong> on a <strong>majority (2 of 3)</strong> white light decision; a majority of red lights means no lift. <em>USAW local note: at local events the 3 referees also hold the authority of the Jury and Technical Controller, and the Speaker may take the Marshal's role.</em>",
+       ref:"USAW Amendment to TCRR 7"},
       {q:"What does the center referee signal control, and what command ends the lift?",
        a:"The center referee gives the <strong>\"Down\"</strong> signal (light + audible) once the lift is held motionless and under control. The athlete must wait for it before lowering the bar.",
        ref:"Officiating basics"},
@@ -247,11 +256,11 @@ const DECKS = {
        a:"Ensures the <strong>platform, barbell, and equipment meet specifications</strong> and that loading is correct and safe throughout the session — a key safety backstop supporting the referees.",
        ref:"USAW Referee Protocols"},
       {q:"What is the time limit an athlete normally has to start an attempt once called?",
-       a:"<strong>60 seconds</strong> from when the bar is loaded and the athlete is called — extended to <strong>2 minutes</strong> if they are following themselves (back-to-back attempts).",
-       ref:"Officiating basics"},
+       a:"<strong>60 seconds</strong> from when the bar is loaded and the athlete is called — extended to <strong>2 minutes</strong> if they are following themselves (back-to-back attempts). A warning signal sounds 30 seconds before time expires.",
+       ref:"IWF TCRR 6.6.8"},
       {q:"What's the minimum jump in weight between attempts?",
-       a:"<strong>1 kg</strong> (the barbell can only go up, never down, during the competition).",
-       ref:"Officiating basics"},
+       a:"<strong>1 kg</strong> — the barbell weight must always be a multiple of 1 kg, and it can only go up, never down, during competition.",
+       ref:"IWF TCRR 6.6"},
     ]
   },
   intermediate: {
@@ -260,19 +269,19 @@ const DECKS = {
     blurb:"From your program folder",
     cards:[
       {q:"How many bodyweight categories exist for Senior/Junior men and women, and through what date are the CURRENT categories used?",
-       a:"<strong>Eight (8) categories</strong> each. The current sets remain in use until the new categories take effect <strong>from 01 August 2026</strong>.",
+       a:"<strong>Eight (8) categories</strong> each. These are the categories <strong>effective 01 August 2026</strong> (the standard going into the LA28 cycle). <em>USAW note: domestic US competitions use a separate USAW category table (by age group) effective June 1, 2025 — see the USAW deck.</em>",
        ref:"IWF TCRR 1.2.1 / 1.2.2 (mod. 05 Nov 2025)"},
-      {q:"List the current Senior/Junior MEN categories (pre-Aug 2026).",
-       a:"<strong>60, 65, 71, 79, 88, 94, 110, +110 kg</strong>.",
+      {q:"List the standard Senior/Junior MEN categories (effective 01 Aug 2026).",
+       a:"<strong>60, 65, 70, 75, 85, 95, 110, +110 kg</strong>.",
        ref:"IWF TCRR 1.2.1"},
-      {q:"List the MEN categories effective 01 August 2026.",
-       a:"<strong>60, 65, 70, 75, 85, 95, 110, +110 kg</strong>. (71→70, 79→75, 88→85, 94→95.)",
+      {q:"What were the previous MEN categories (pre-01 Aug 2026)?",
+       a:"<strong>60, 65, 71, 79, 88, 94, 110, +110 kg</strong>. (Changed: 71→70, 79→75, 88→85, 94→95.)",
        ref:"IWF TCRR 1.2.1"},
-      {q:"List the current Senior/Junior WOMEN categories (pre-Aug 2026).",
-       a:"<strong>48, 53, 58, 63, 69, 77, 86, +86 kg</strong>.",
+      {q:"List the standard Senior/Junior WOMEN categories (effective 01 Aug 2026).",
+       a:"<strong>49, 53, 57, 61, 69, 77, 86, +86 kg</strong>.",
        ref:"IWF TCRR 1.2.2"},
-      {q:"List the WOMEN categories effective 01 August 2026.",
-       a:"<strong>49, 53, 57, 61, 69, 77, 86, +86 kg</strong>. (48→49, 58→57, 63→61; the top four are unchanged.)",
+      {q:"What were the previous WOMEN categories (pre-01 Aug 2026)?",
+       a:"<strong>48, 53, 58, 63, 69, 77, 86, +86 kg</strong>. (Changed: 48→49, 58→57, 63→61; top four unchanged.)",
        ref:"IWF TCRR 1.2.2"},
       {q:"What are the YOUTH WOMEN categories from 01 August 2026?",
        a:"<strong>45, 49, 53, 57, 61, 69, 77, +77 kg</strong>.",
@@ -293,11 +302,11 @@ const DECKS = {
        a:"When they <strong>attempt at least one lift on the platform</strong> (Snatch or C&amp;J), successful or not. In Total-only events, attempting at least one Snatch counts.",
        ref:"IWF TCRR 2.1"},
       {q:"What is the official IWF Technical Official uniform color and code?",
-       a:"<strong>Navy blue, colour code PMS 2767</strong> — for the jacket and trousers/skirt, worn with a white shirt and IWF tie/scarf.",
-       ref:"IWF TCRR 7.2.3"},
+       a:"<strong>Navy blue, colour code PMS 2767</strong> — for the jacket and trousers/skirt, worn with a white shirt and IWF tie/scarf. <em>USAW note: this navy suit applies to National, IWF Cat 1/Cat 2, and Testing candidates. Local-designation officials wear a white polo or button-down, dark dress pants/skirt, and black shoes — no navy suit required.</em>",
+       ref:"IWF TCRR 7.2.3 / USAW Amendment to 7.2.3"},
       {q:"Where are the two IWF TO badges worn on the uniform?",
-       a:"The <strong>metal TO badge is pinned on the left lapel</strong> of the jacket; the <strong>sewn TO badge sits on the left breast pocket</strong>.",
-       ref:"IWF TCRR 7.2.3"},
+       a:"The <strong>metal TO badge is pinned on the left lapel</strong> of the jacket; the <strong>sewn TO badge sits on the left breast pocket</strong>. <em>USAW note: the lapel pin is mandatory for IWF Cat 1/Cat 2 but optional at the National certification level.</em>",
+       ref:"IWF TCRR 7.2.3 / USAW Amendment to 7.2.3"},
       {q:"For women officials, what hosiery is specified with trousers vs. with a skirt?",
        a:"With <strong>trousers</strong>: black / dark blue / skin-colour <strong>socks</strong>. With a <strong>skirt</strong>: black / dark blue / skin-colour <strong>stockings</strong>. Black dress shoes either way.",
        ref:"IWF TCRR 7.2.3"},
@@ -338,9 +347,9 @@ const DECKS = {
       {q:"If there is a loading error or a serious Speaker announcement error, who decides on a re-attempt?",
        a:"The <strong>Jury</strong> decides whether or not to grant the athlete <strong>another attempt</strong>.",
        ref:"Jury procedure"},
-      {q:"An athlete touches the platform with footwear AFTER a successful attempt is signaled. Reversal?",
-       a:"No — the <strong>referees' good-lift decision is NOT reversed</strong>. The Jury issues a <strong>warning</strong>; if the athlete repeats it on a subsequent lift, that lift is a <strong>No Lift</strong>.",
-       ref:"IWF TCRR 2025"},
+      {q:"An athlete touches the barbell with footwear while on the platform. Ruling?",
+       a:"<strong>No Lift</strong> — touching the barbell with footwear at any time on the platform, <strong>before OR after the attempt</strong>, is a No Lift. This is the standard applied at USAW competitions. <em>(For reference, plain IWF treats a post-lift footwear touch of the platform as a warning, not an automatic reversal — but use the No-Lift standard here.)</em>",
+       ref:"USAW Amendment 2.5.1.11"},
       {q:"Who may work as a Technical Official at an IWF Event, and what conflict restriction applies?",
        a:"Only <strong>International Technical Officials</strong>. Selected TOs <strong>must not coach or assist any athlete</strong> during the event.",
        ref:"IWF TCRR 7.x General Provisions"},
@@ -361,11 +370,11 @@ const DECKS = {
        a:"Gripped palms-down and lifted in a <strong>single continuous movement</strong> to full arm extension overhead, while splitting or bending the legs. <strong>Stopping the upward movement (pulling from the hang) is a No Lift.</strong>",
        ref:"IWF TCRR 2.x Snatch"},
       {q:"List the No-Lift causes related to arm/elbow movement that apply to both lifts.",
-       a:"<ul><li><strong>Pause during the extension of the arms</strong></li><li><strong>Bending and extending the elbows during the recovery</strong> (re-press / press-out)</li><li><strong>Uneven or incomplete extension</strong> of the arms at completion</li></ul>",
-       ref:"IWF TCRR incorrect movements"},
+       a:"<ul><li><strong>Pause during the extension of the arms</strong></li><li><strong>Bending and extending the elbows during the recovery</strong> (re-press / press-out)</li><li><strong>Uneven or incomplete extension</strong> of the arms at completion</li></ul> <em>USAW note: an athlete who cannot fully extend their elbow(s) for any reason need only point to the elbow(s) before each attempt (their responsibility; the doctor may still examine).</em>",
+       ref:"IWF incorrect movements / USAW Amendment 2.4.4"},
       {q:"What body-contact faults make a lift a No Lift?",
-       a:"<ul><li>Touching the platform with <strong>any part of the body other than the feet</strong></li><li>In the Clean: <strong>touching the thighs or knees with the elbows or upper arms</strong></li></ul>",
-       ref:"IWF TCRR incorrect movements"},
+       a:"<ul><li>Touching the platform with <strong>any part of the body other than the feet</strong></li><li>In the Clean: <strong>touching the thighs or knees with the elbows or upper arms</strong></li><li>Touching the <strong>barbell with footwear</strong> at any time on the platform (USAW standard)</li></ul>",
+       ref:"IWF incorrect movements / USAW 2.5.1.11"},
       {q:"In the Clean, where may the barbell rest, and what must NOT happen before the final position?",
        a:"It rests on the <strong>clavicles, the chest above the nipples, or fully bent arms</strong>. The barbell <strong>must not touch the chest before</strong> reaching the final racked position.",
        ref:"IWF TCRR 2.x Clean"},
@@ -393,6 +402,125 @@ const DECKS = {
       {q:"Is a press-out the same fault in both Snatch and Jerk? What's the underlying principle?",
        a:"Yes — a <strong>press-out</strong> (continuing to press the bar after the arms pause/bend) is a No Lift in both. Principle: arms must reach <strong>full extension in one motion</strong> without re-bending or pausing.",
        ref:"IWF TCRR incorrect movements"},
+    ]
+  },
+  expert: {
+    level:"Expert",
+    name:"Weigh-In, Attempts & Equipment",
+    blurb:"Weigh-in, clock, calling order, specs",
+    cards:[
+      {q:"How long does the weigh-in last, and when does it begin relative to the session?",
+       a:"The weigh-in <strong>lasts one (1) hour</strong> and begins <strong>two (2) hours before</strong> the start of the first group. Each athlete is weighed in the presence of at least one Weigh-in Official.",
+       ref:"IWF TCRR 6.4 / weigh-in procedure"},
+      {q:"What is the 250g costume allowance, and how is the recorded bodyweight handled?",
+       a:"Athletes weigh in wearing the competition costume; a <strong>250g allowance</strong> applies. Anyone within 250g over their category limit is eligible — and is <strong>logged at the category limit weight</strong> (e.g. a 71kg lifter recorded as 71.00kg) rather than the actual reading.",
+       ref:"IWF TCRR Reg. to 6.4 (2025)"},
+      {q:"Can a T-shirt and shorts be worn for weigh-in instead of the costume? And what about the head?",
+       a:"<strong>No</strong> — a T-shirt and shorts cannot replace the costume; no naked or bra-less weigh-ins. <strong>Hair and any items worn on the head</strong> are considered part of the head (i.e., included).",
+       ref:"IWF TCRR 6.4"},
+      {q:"How is the order of weigh-in and lifting determined?",
+       a:"After Verification of Final Entries, a <strong>randomly generated lot number</strong> is drawn for each athlete. The athlete keeps that lot number for the whole event; it sets the <strong>weigh-in order and the lifting order</strong> when weights are equal.",
+       ref:"IWF TCRR (VFE / lot)"},
+      {q:"What is the standard clock time for an attempt, and when does it extend to 2 minutes?",
+       a:"<strong>60 seconds</strong> between the call and the start of the attempt. It becomes <strong>2 minutes (120s)</strong> when the athlete takes <strong>two lifts in succession</strong> (follows themselves).",
+       ref:"IWF TCRR 6.6.8"},
+      {q:"When is the timing clock started, and when is it stopped?",
+       a:"<strong>Started</strong> when the Speaker finishes announcing the attempt in English, OR when the bar is loaded and loaders leave the platform — whichever is last. <strong>Stopped</strong> the moment the barbell is raised from the platform.",
+       ref:"IWF TCRR 6.6 / Timekeeper duties"},
+      {q:"What happens if the bar doesn't reach knee height after the athlete starts?",
+       a:"The Timekeeper <strong>restarts the timing clock</strong> — the attempt clock resumes if the barbell fails to reach the height of the athlete's knees.",
+       ref:"Timekeeper duties 9.5"},
+      {q:"If an athlete is called but doesn't lift within the allocated time, what happens?",
+       a:"At the end of the allocated time, if the barbell hasn't been raised from the platform, the three referees declare the attempt a <strong>\"No Lift.\"</strong> A warning signal sounds 30 seconds before time expires.",
+       ref:"IWF TCRR 6.6.8"},
+      {q:"How many weight changes are allowed before/between attempts, and what's the timing window?",
+       a:"<strong>Two (2) changes</strong> are allowed (excluding the automatic increment). Changes can be submitted in the <strong>first 30 seconds</strong> after the clock starts and <strong>must be made before the last 30 seconds</strong> — not in the final 30 seconds of one's own attempt.",
+       ref:"IWF TCRR 6.6 / Chief Marshal"},
+      {q:"To increase the weight, what must happen and by when?",
+       a:"The athlete/Team Official must <strong>sign the Athlete's Card before the final call</strong> (notifying the Chief Marshal). To increase, sign before the 30-second indicator. Failure to follow procedure can forfeit the two allowed changes.",
+       ref:"IWF TCRR 6.6.11 / 6.6.12"},
+      {q:"Once the announced weight is loaded and the clock has started, can the weight be reduced?",
+       a:"<strong>No.</strong> Once the announced weight is loaded and the clock is running, the weight <strong>cannot be reduced</strong>. Watching the loading progression and being ready is the athlete's/Team Official's sole responsibility.",
+       ref:"IWF TCRR 6.6"},
+      {q:"What is the minimum increase between a first and second attempt, and the general weight increment?",
+       a:"The barbell weight must always be a <strong>multiple of 1 kg</strong>, so the minimum increase is <strong>1 kg</strong>. The bar only goes up during competition.",
+       ref:"IWF TCRR 6.6"},
+      {q:"If a lifter changes weight in a way that changes the calling order to follow another lifter, what clock applies?",
+       a:"The <strong>normal 1 minute (60 seconds)</strong> applies for that next attempt — the 2-minute allowance is only for genuinely following oneself.",
+       ref:"IWF TCRR 6.6.9 / 6.6.14"},
+      {q:"How is an athlete's withdrawal from a lift made official?",
+       a:"The coach/lifter must <strong>sign the Athlete's Card</strong> noting withdrawal from that lift. Once signed, the withdrawal is official and the <strong>lifter cannot re-enter</strong> that lift.",
+       ref:"IWF TCRR 6.6.15"},
+      {q:"What are the men's and women's bar weights, and the new maximum rim (sleeve) diameters?",
+       a:"Men's bar <strong>20 kg</strong>, women's bar <strong>15 kg</strong>. Updated maximum rim diameter: <strong>8.5 cm for men, 8 cm for women</strong>.",
+       ref:"IWF TCRR equipment / 2025 update"},
+      {q:"How is the barbell loaded, and how must discs face?",
+       a:"Heaviest discs <strong>loaded first</strong>, then lighter discs in <strong>descending order toward the outer edge</strong>, secured by collars. Discs must be loaded so the <strong>on-duty referees and Jury can identify each disc's weight</strong>.",
+       ref:"IWF TCRR loading"},
+      {q:"What is the maximum platform height, and the change to stage height above referees?",
+       a:"The competition platform may be up to <strong>10 cm in height</strong>. The maximum height of the stage above the referees' seating positions was reduced from 1 m to <strong>80 cm</strong>.",
+       ref:"IWF TCRR equipment / 2025 update"},
+      {q:"USAW amendment: when can a lighter-than-standard bar and spring collars be used at LOCAL events?",
+       a:"At local events, to use the largest available plates: <strong>men lifting under 45 kg and women under 40 kg</strong> may use a lighter bar if the bar's diameter and length inside the collars meet IWF standards. <strong>Spring collars</strong> may be used (no credit for collar weight).",
+       ref:"USAW Amendments to IWF Technical Rules"},
+      {q:"USAW amendment: how many Challenge Cards per athlete, and when may they be used?",
+       a:"<strong>One (1) Challenge Card per athlete</strong>, provided at the Marshal table before the session. Used <strong>only at Senior National Championships, A groups, when a Jury is seated and VPT is in use</strong>.",
+       ref:"USAW Amendments to IWF Technical Rules"},
+      {q:"USAW amendment: if an athlete weighs in heavier than their registered category, what option do they have?",
+       a:"They <strong>may opt to move up</strong> into the category dictated by their actual bodyweight and <strong>remain in their current scheduled session</strong>.",
+       ref:"USAW Amendments (Reg. to 6.4)"},
+      {q:"USAW amendment: what conduct can cause immediate loss of participation rights?",
+       a:"<strong>Threatening any participant</strong>, unduly delaying competition, or behavior that could <strong>damage facilities/equipment or USAW's reputation</strong> (e.g. \"spiking\" the barbell).",
+       ref:"USAW Amendments to IWF Technical Rules"},
+    ]
+  },
+  usaw: {
+    level:"USAW",
+    name:"USAW Amendments",
+    blurb:"Where US rules differ from IWF",
+    cards:[
+      {q:"What is the minimum age to serve as a USAW Technical Official?",
+       a:"A TO must be <strong>chronologically a minimum of 18 years old</strong>.",
+       ref:"USAW Amendment to TCRR 7.7"},
+      {q:"At LOCAL events, how do referee and Speaker roles expand compared to IWF events?",
+       a:"<ul><li>The <strong>three referees</strong> hold the same authority as the <strong>Jury and Technical Controller</strong> at IWF events</li><li>The <strong>Speaker</strong> may take on the <strong>Marshal's</strong> responsibilities</li></ul> At national events, if officials are short, USAW may have the Speaker/referees cover absent Technical Controller, Marshal, or Jury roles.",
+       ref:"USAW Amendment to TCRR 7"},
+      {q:"What is the USAW dress code for LOCAL-designation officials (vs. the IWF navy suit)?",
+       a:"<strong>White polo or white button-down shirt</strong>, dark dress pants or skirt, black dress shoes, optional tie for men. <strong>No jeans, athleisure, or workout clothes.</strong> The navy suit is only for National / IWF Cat 1 / Cat 2 / Testing candidates.",
+       ref:"USAW Amendment to TCRR 7.2.3"},
+      {q:"How does USAW handle an athlete who cannot fully extend their elbow(s)?",
+       a:"The athlete <strong>need only point to their elbow(s) before each attempt</strong> — their sole responsibility. The Competition Doctor may still be requested to examine them.",
+       ref:"USAW Amendment to TCRR 2.4.4"},
+      {q:"What is the ruling if an athlete touches the barbell with footwear?",
+       a:"It is a <strong>No Lift</strong> — touching the barbell with footwear <strong>at any time while on the platform, before AND after the attempt</strong>. This is the standard ruling at USAW-sanctioned competitions.",
+       ref:"USAW Amendment to TCRR 2.5.1.11"},
+      {q:"Can a first-time athlete skip the singlet at a local USAW event?",
+       a:"Yes — at local events an athlete may wear a <strong>t-shirt and shorts in place of a singlet for their first USAW-sanctioned event</strong>. Otherwise the singlet must be worn with straps up as the manufacturer intended.",
+       ref:"USAW Amendment to TCRR 4.2"},
+      {q:"What gender requirement applies to the weigh-in official?",
+       a:"Each athlete must be weighed in the presence of at least one <strong>Weigh-in Official of the same gender</strong> as the athlete. Athletes <strong>under 18</strong> must also be accompanied by a coach or parent (either gender).",
+       ref:"USAW Amendment to Reg. to 6.4 §3 / §15"},
+      {q:"At NATIONAL events, who may move up a bodyweight category at weigh-in, and what happens to their Entry Total?",
+       a:"<strong>Youth and Masters</strong> athletes who weigh heavier than registered may move up to their actual category and keep their session number. If their Entry Total is below the higher category's <strong>Qualifying Total</strong>, the Weigh-in Official raises it to meet that Qualifying Total.",
+       ref:"USAW Amendment to Reg. to 6.4 §15"},
+      {q:"How are USAW domestic Open MEN's bodyweight categories different from IWF (as of June 1, 2025)?",
+       a:"USAW Open men: <strong>60, 65, 71, 79, 88, 98, 110, +110 kg</strong>. Note USAW uses <strong>98 kg</strong> where current IWF uses 94 kg — the domestic table is organized by age group and differs from the IWF set.",
+       ref:"USAW Amendment to TCRR 1.2"},
+      {q:"How are USAW domestic Open WOMEN's bodyweight categories set (as of June 1, 2025)?",
+       a:"USAW Open women: <strong>48, 53, 58, 63, 69, 77, 86, +86 kg</strong>. Youth/age-group categories scale down from there in the USAW table.",
+       ref:"USAW Amendment to TCRR 1.2"},
+      {q:"What age groups does USAW recognize?",
+       a:"<strong>U11, U13, U15, U17, Junior (15–20), U23, U25, University (18–25), Masters (35+), Open (0+)</strong>. Masters age groups span 5 years (35–39, 40–44, …).",
+       ref:"USAW Amendment to TCRR 1.1"},
+      {q:"What are the minimum lift weights for Under 11/Under 13 and for Masters?",
+       a:"<strong>U11/U13: minimum 10 kg.</strong> <strong>Masters: minimum 20 kg.</strong> Light loads use lighter bars (5 kg / 15 kg) with spring collars per the USAW bar-loading chart; heavier loads move to competition collars.",
+       ref:"USAW Amendment to TCRR 6.6.4"},
+      {q:"At local USAW events, what platform size and Challenge Card rules apply?",
+       a:"Platform may be <strong>3.66 m (12 ft) to 4 m square, up to 10 cm high</strong> (mark the outline if level with the floor). <strong>One Challenge Card per athlete</strong>, used only at Senior Nationals A groups with a Jury seated and VPT in use.",
+       ref:"USAW Amendments to Reg. to 3.3.2 / 3.3.7"},
+      {q:"How are team points awarded at USAW national events, and what may the Speaker announce to save time?",
+       a:"Team points are allocated in <strong>Total only</strong>. For efficiency the Speaker need only announce the <strong>loading instruction to the Loaders and the athlete's name</strong> before starting the clock.",
+       ref:"USAW Amendments to TCRR 6.8.4 / 7.12.1"},
     ]
   }
 };
