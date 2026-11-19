@@ -1,0 +1,497 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>IWF Officiating Flashcards</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: a navy header band, then a study board — decks above, one card at the centre referee's eye level, red/white referee buttons below. */
+:root{
+  --ground:#0d1830;      /* night over the platform */
+  --navy:#13294b;        /* PMS 2767, the TO jacket */
+  --panel:#162748;
+  --line:#2b3d64;
+  --ink:#eef1f6;
+  --muted:#9ba8c2;
+  --maroon:#a31d4b;      /* accent maroon, lifted for dark ground */
+  --sand:#d9b783;        /* dune / medal gold */
+  --good:#f4f6fa;        /* white light */
+  --nolift:#e0405f;      /* red light */
+  --track:#22355b;
+  --font-display:'Saira Extra Condensed','Arial Narrow',sans-serif-condensed,sans-serif;
+  --font-body:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --ground:#eef1f6; --navy:#13294b; --panel:#ffffff; --line:#d3d9e5; --ink:#13294b; --muted:#5a6886;
+    --maroon:#8a1538; --sand:#8f6424; --good:#ffffff; --nolift:#c8213f; --track:#e1e6ef; color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --ground:#eef1f6; --navy:#13294b; --panel:#ffffff; --line:#d3d9e5; --ink:#13294b; --muted:#5a6886;
+  --maroon:#8a1538; --sand:#8f6424; --good:#ffffff; --nolift:#c8213f; --track:#e1e6ef; color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.5}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--sand);outline-offset:2px}
+
+/* header band: always navy + maroon (the jacket and the flag), in both themes */
+.band{background:var(--navy);color:#eef1f6}
+.band-in{max-width:880px;margin:0 auto;padding-block:22px 18px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-wrap:wrap;gap:18px 28px;align-items:flex-end;justify-content:space-between}
+.eyebrow{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.2em;font-size:.82rem;color:#d9b783;font-weight:600}
+h1{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.2rem,7vw,3.4rem);line-height:.92;margin:4px 0 0;letter-spacing:.01em;text-wrap:balance}
+h1 span{color:#e58aa5}
+.dates{color:#b9c4da;font-size:.85rem;margin-top:8px}
+.clock{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.clock-face{font-family:var(--font-mono);font-weight:700;font-size:clamp(2.4rem,8vw,3.4rem);line-height:1;background:#0a1226;color:#ff5b74;padding:8px 14px 6px;border-radius:6px;border:1px solid #2b3d64;font-variant-numeric:tabular-nums;letter-spacing:.02em;text-shadow:0 0 12px rgba(255,70,100,.45)}
+.clock-lab{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;color:#b9c4da}
+.serr{height:6px;background:#8a1538}
+
+.wrap{max-width:880px;margin:0 auto;padding-block:20px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:22px}
+
+/* today strip */
+.today{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.stat{background:var(--panel);padding:12px 14px;min-width:0}
+.stat .k{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;color:var(--muted)}
+.stat .v{font-family:var(--font-mono);font-weight:700;font-size:1.5rem;font-variant-numeric:tabular-nums;line-height:1.2}
+.stat .v small{font-size:.85rem;color:var(--muted);font-weight:500}
+.meter{height:5px;background:var(--track);border-radius:9px;margin-top:6px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--sand);width:0;transition:width .3s}
+.today-cta{grid-column:1/-1;background:var(--panel);padding:10px 14px;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.today-cta p{margin:0;color:var(--muted);font-size:.88rem;min-width:0;flex:1 1 240px}
+.go{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.14em;font-weight:700;font-size:.95rem;background:var(--maroon);color:#fff;border:0;border-radius:8px;padding:10px 16px;cursor:pointer}
+.go:hover{filter:brightness(1.12)}
+
+/* decks */
+.sec-h{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.18em;font-size:.85rem;color:var(--muted);margin:0 0 8px;font-weight:600}
+.decks{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.deck{text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:3px;min-width:0;transition:border-color .15s,transform .15s}
+.deck:hover{border-color:var(--sand)}
+.deck[aria-pressed="true"]{border-color:var(--maroon);box-shadow:inset 0 0 0 1px var(--maroon)}
+.deck .lv{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:var(--sand);font-weight:600}
+.deck .nm{font-family:var(--font-display);font-size:1.35rem;font-weight:600;line-height:1.1}
+.deck .bl{font-size:.8rem;color:var(--muted)}
+.deck .row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px;font-family:var(--font-mono);font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.deck .meter{flex:1}
+
+/* study */
+.study{display:flex;flex-direction:column;gap:12px;scroll-margin-top:12px}
+.study-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.study-top h2{font-family:var(--font-display);text-transform:uppercase;font-size:1.5rem;margin:0;letter-spacing:.03em}
+.pos{font-family:var(--font-mono);font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.scene{perspective:1600px}
+.card{position:relative;min-height:340px;cursor:pointer;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.card.flipped{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;padding:24px 24px 18px;display:flex;flex-direction:column;gap:12px;border:1px solid var(--line);background:var(--panel);overflow:auto}
+.back{transform:rotateY(180deg);border-top:4px solid var(--maroon)}
+.front{border-top:4px solid var(--sand)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;font-weight:600;padding:2px 9px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+.chip.st-new{color:var(--muted)}
+.chip.st-miss{color:var(--nolift);border-color:var(--nolift)}
+.chip.st-learn{color:var(--sand);border-color:var(--sand)}
+.chip.st-done{color:var(--ink);border-color:var(--ink)}
+.chip.verify{color:var(--sand);border-style:dashed}
+.chip.upd{color:var(--ink);border-color:var(--sand);background:color-mix(in srgb,var(--sand) 18%,transparent)}
+.q{font-family:var(--font-display);font-weight:600;font-size:clamp(1.45rem,4vw,1.9rem);line-height:1.15;text-wrap:balance}
+.a{font-size:1rem;line-height:1.55;max-width:66ch}
+.a strong{color:var(--sand);font-weight:600}
+.a ul{margin:6px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:3px}
+.a em{color:var(--muted)}
+.hint{margin-top:auto;font-size:.78rem;color:var(--muted)}
+.ref{margin-top:auto;font-family:var(--font-mono);font-size:.72rem;color:var(--muted)}
+kbd{font-family:var(--font-mono);font-size:.72rem;border:1px solid var(--line);border-radius:4px;padding:0 5px}
+
+.ctrl{display:grid;grid-template-columns:auto 1fr 1fr auto;gap:10px;align-items:stretch}
+.nav{background:transparent;border:1px solid var(--line);border-radius:10px;padding:0 14px;cursor:pointer;font-family:var(--font-display);font-size:1.2rem;color:var(--muted)}
+.nav:hover:not(:disabled){color:var(--ink);border-color:var(--ink)}
+.nav:disabled{opacity:.3;cursor:default}
+.ref-btn{display:flex;align-items:center;justify-content:center;gap:10px;border-radius:10px;padding:12px 10px;cursor:pointer;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.12em;font-weight:700;font-size:1.05rem;border:1px solid var(--line);background:var(--panel)}
+.ref-btn .lamp{width:18px;height:18px;border-radius:50%;flex:none}
+.ref-btn.no .lamp{background:var(--nolift);box-shadow:0 0 10px var(--nolift)}
+.ref-btn.yes .lamp{background:var(--good);border:1px solid var(--muted);box-shadow:0 0 10px rgba(255,255,255,.5)}
+.ref-btn:hover{border-color:var(--sand)}
+.ref-btn.flipme{grid-column:2/4;background:var(--maroon);border-color:var(--maroon);color:#fff}
+.sub-ctrl{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+.link{background:none;border:0;color:var(--muted);cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:0}
+.link:hover{color:var(--ink)}
+.done{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px 24px;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center}
+.done h3{font-family:var(--font-display);text-transform:uppercase;font-size:1.8rem;margin:0}
+.done p{margin:0;color:var(--muted);max-width:50ch}
+.confirm{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
+footer{font-size:.78rem;color:var(--muted);line-height:1.6;border-top:1px solid var(--line);padding-top:16px;max-width:75ch}
+footer a{color:var(--sand)}
+footer ul{margin:6px 0;padding-left:18px}
+
+@media (max-width:520px){
+  .today{grid-template-columns:1fr 1fr}
+  .today .stat:nth-child(3){grid-column:1/-1}
+  .ctrl{grid-template-columns:1fr 1fr}
+  .nav{display:none}
+  .ref-btn.flipme{grid-column:1/-1}
+  .card{min-height:400px}
+  .clock{align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){.card{transition:none}.meter i{transition:none}}
+</style>
+
+<header class="band">
+  <div class="band-in">
+    <div>
+      <div class="eyebrow">International Technical Official · Study Set</div>
+      <h1>IWF <span>Officiating</span><br>Flashcards</h1>
+      <div class="dates">Practice set for technical officials · IWF TCRR 2026 and Annex of modifications</div>
+    </div>
+  </div>
+  <div class="serr" aria-hidden="true"></div>
+</header>
+
+<main class="wrap">
+  <section class="today" aria-label="Today">
+    <div class="stat"><div class="k">Today</div><div class="v" id="tDone">0 <small>/ 0</small></div><div class="meter"><i id="tBar"></i></div></div>
+    <div class="stat"><div class="k">Mastered</div><div class="v" id="mAll">0 <small>/ 0</small></div><div class="meter"><i id="mBar"></i></div></div>
+    <div class="stat"><div class="k">Still missing</div><div class="v" id="missCt">0</div><div class="meter"><i id="missBar" style="background:var(--nolift)"></i></div></div>
+    <div class="today-cta"><p id="planTxt">Each session pulls missed cards first, then new ones.</p><button class="go" id="goToday">Start today's session</button></div>
+  </section>
+
+  <section>
+    <h2 class="sec-h">Decks</h2>
+    <div class="decks" id="decks"></div>
+  </section>
+
+  <section class="study" id="study">
+    <div class="study-top"><h2 id="sTitle">Deck</h2><span class="pos" id="pos">1 / 1</span></div>
+    <div id="cardArea">
+      <div class="scene">
+        <div class="card" id="card" tabindex="0" role="button" aria-label="Flip card">
+          <div class="face front">
+            <div class="chips" id="fchips"></div>
+            <div class="q" id="q"></div>
+            <div class="hint">Tap the card or press <kbd>Space</kbd> to see the answer</div>
+          </div>
+          <div class="face back">
+            <div class="chips"><span class="chip">Answer</span></div>
+            <div class="a" id="a"></div>
+            <div class="ref" id="ref"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ctrl" id="ctrl">
+      <button class="nav" id="prev" aria-label="Previous card">‹</button>
+      <button class="ref-btn flipme" id="flipBtn">Show answer</button>
+      <button class="ref-btn no" id="missBtn" hidden><span class="lamp"></span>Missed it</button>
+      <button class="ref-btn yes" id="gotBtn" hidden><span class="lamp"></span>Got it</button>
+      <button class="nav" id="next" aria-label="Skip to next card">›</button>
+    </div>
+    <div class="sub-ctrl">
+      <span>Keys: <kbd>Space</kbd> flip · <kbd>1</kbd> missed · <kbd>2</kbd> got it · <kbd>←</kbd><kbd>→</kbd> move</span>
+      <span class="confirm" id="resetWrap"><button class="link" id="resetBtn">Reset my progress</button></span>
+    </div>
+  </section>
+
+  <footer>
+    <strong>Unofficial study aid.</strong> Built from the IWF TCRR 2026 and its Annex of modifications as of 27 October 2026. These cards cover IWF rules; at US-sanctioned competitions, USAW amendments govern where they differ. Cards marked <em>verify</em> come from secondary summaries; check them against the official documents before relying on them. Progress is saved in this browser only.
+    <ul>
+      <li><a href="https://iwf.sport/weightlifting_/rules/" target="_blank" rel="noopener">IWF Rules page (current TCRR)</a></li>
+      <li><a href="https://www.usaweightlifting.org/referees" target="_blank" rel="noopener">USA Weightlifting: Technical Officials</a></li>
+    </ul>
+    Provided for referee practice by the Pacific Northwest WSO. Not an official publication of the IWF or USA Weightlifting.
+  </footer>
+</main>
+
+<script>
+const DECKS = {
+fop:{lv:"IWF Rules",nm:"Field of Play Roles",bl:"Referees, TC, Marshal, Timekeeper, Doctor",cards:[
+ {q:"Who may work as a Technical Official at an IWF Event, and what are they barred from doing during it?",a:"Only <strong>International Technical Officials</strong>. Selected TOs <strong>must not coach or assist any athletes</strong> during the Event.",ref:"TCRR 7.2.1"},
+ {q:"What can a Category 1 ITO officiate that a Category 2 ITO cannot?",a:"Cat 1 may officiate at <strong>all levels, including the Olympic Games</strong>. Cat 2 may officiate at international events <strong>except</strong> the <strong>Olympic Games, Youth Olympic Games, World Championships and Universiades</strong>. A Certificate of Duty holder may assist, but not in positions needing a Cat 1 or Cat 2 card.",ref:"TCRR 7.3.2"},
+ {q:"How long is an ITO licence valid?",a:"For <strong>each Olympiad, up to the end of the next Olympic year</strong>. A valid licence is a condition of officiating at IWF Events.",ref:"TCRR 7.3.4"},
+ {q:"What does it take to move from National TO to IWF Category 2?",a:"<ul><li>At least <strong>5 years</strong> as a National TO</li><li>Proposed by your Member Federation</li><li><strong>90%+</strong> on the practical exam, <strong>85%+</strong> on the questionnaire</li></ul>",ref:"TCRR 7.3.5"},
+ {q:"What does it take to move from Category 2 to Category 1?",a:"<ul><li>At least <strong>2 years</strong> as Cat 2</li><li>Practical competence shown to <strong>three Cat 1 TOs</strong> during a competition under IWF TCRR</li><li><strong>95%+</strong> practical, <strong>90%+</strong> questionnaire</li><li>Understand and speak <strong>basic English</strong></li></ul> <em>The practical may be taken at IWF World Events and Continental Championships, but <strong>not</strong> at World Championships, Olympic Games, YOG, World University Games or <strong>Olympic Qualification Events</strong>, where Cat 1 is already required.</em>",ref:"TCRR 7.3.6",upd:1},
+ {q:"How many referees are assigned to each group, and what is the gender balance?",a:"<strong>Four</strong>: Centre Referee, two Side Referees and one Reserve, with <strong>two men and two women</strong> per group.",ref:"TCRR 7.7.2"},
+ {q:"Do the Centre Referee and Side Referees carry different weight in a decision?",a:"<strong>No.</strong> The three Referees have <strong>equal rights</strong> in adjudicating a lift.",ref:"TCRR 7.7.5"},
+ {q:"With the Referee Light System, when is the “Down” signal given?",a:"Each referee presses <strong>white</strong> for a good lift. As soon as <strong>two referees agree</strong>, a <strong>visual and audible “Down”</strong> signal is given. A referee who sees a fault presses <strong>red</strong> immediately.",ref:"TCRR 3.3.6"},
+ {q:"When do the decision lights come on, and can a referee still change a decision?",a:"The lights come on <strong>3 seconds after</strong> all three referees have decided, and stay lit for <strong>at least 3 seconds</strong>. After the “Down” signal and <strong>before the lights operate</strong>, referees have a <strong>3-second window to reverse</strong>. A referee who misses it must raise the <strong>small flag</strong> to show the change.",ref:"TCRR 3.3.6.8–3.3.6.9",upd:1},
+ {q:"No light system is working. How does the Centre Referee call “Down”?",a:"The Centre Referee gives the “Down” signal, <strong>audible and visible</strong> (says “Down” with a downward arm motion), <strong>after confirming with the Side Referees</strong>. Decisions are shown with the small red and white flags.",ref:"TCRR 7.7.9"},
+ {q:"Where are the referees during the Victory Ceremony?",a:"They <strong>remain in position</strong> (as does the Jury).",ref:"TCRR 7.7.11 / 7.5.13"},
+ {q:"How many Technical Controllers per group, and what is their key on-platform duty?",a:"At <strong>Olympic Games, YOG, World Championships and Universiades</strong>, a minimum of <strong>two</strong> per group. They ensure <strong>no one but the athlete handles the barbell during the lift</strong>, check equipment and athlete outfits, and report non-compliant officials.",ref:"TCRR 7.8.2–7.8.8",upd:1},
+ {q:"Who receives a Challenge Card, and what happens next?",a:"The <strong>nearest Technical Controller</strong> receives it and <strong>immediately stops the competition</strong>, then takes the request to the Chair of the Jury. A valid challenge <strong>automatically starts VPT</strong>. If the challenge <strong>changes the decision in the athlete's favour</strong>, the athlete <strong>retains the card</strong>.",ref:"Reg. to TCRR 3.3.7 §9.3–9.5; IWF Adjudication Process 2026",upd:1},
+ {q:"What is the Chief Marshal’s main duty, and when must the role be Category 1?",a:"Accepting or declining <strong>changes to declarations or attempts</strong> on Athlete’s Cards and relaying them to the Competition Management Table. At <strong>Olympic Games, YOG, World Championships and Universiades</strong> the Chief Marshal must be an <strong>English-speaking Category 1</strong> official appointed by the IWF.",ref:"TCRR 7.9.1–7.9.3",upd:1},
+ {q:"When does the Timekeeper stop the clock, and when does it restart?",a:"It stops <strong>the instant the barbell is raised</strong> from the platform. It <strong>restarts if the bar does not reach knee height</strong> and is returned.",ref:"TCRR 7.10.5–7.10.6"},
+ {q:"Who controls the weigh-in room?",a:"The <strong>Competition Secretary</strong> takes full control of the weigh-in room and its procedure, and also issues warm-up platforms, Athlete Passes, <strong>Challenge Cards</strong>, Warm-up Passes and bibs.",ref:"TCRR 7.11.2–7.11.6"},
+ {q:"What qualifications does a Competition Doctor need, and where is their responsibility?",a:"A registered clinician with <strong>ALS (or equivalent)</strong> and an International TO Card or Certificate of Duty, present <strong>start to end</strong> of competition. IWF doctors are responsible <strong>within the FOP only</strong>. At Worlds and Olympic Games, <strong>two</strong> are on duty (warm-up and platform).",ref:"TCRR 7.13"},
+ {q:"If no TIS is used, who may serve as Speaker?",a:"A <strong>Category 1 or 2 ITO</strong>.",ref:"TCRR 7.12.6"},
+ {q:"How many Team Officials may stand at the platform entrance, and what may they never do to the bar?",a:"<strong>Three.</strong> A Team Official may <strong>not move, adjust or clean the barbell</strong>.",ref:"TCRR 6.6.16 / 7.7.4"},
+ {q:"Someone other than the athlete steps onto the platform while the clock runs. What happens?",a:"The <strong>clock must be stopped</strong>.",ref:"TCRR 6.6.7"},
+ {q:"When must TOs be at their positions, and on the FOP?",a:"At assigned positions or working locations <strong>30 minutes before duty</strong>, and on the FOP <strong>10 minutes before the introduction of athletes</strong>.",ref:"TCRR 7.2.7"},
+ {q:"How many TO meetings are there, and are they obligatory?",a:"A <strong>TOs’ meeting before the Event</strong> is required. A <strong>second meeting around the halfway point</strong> is obligatory at World Championships and held <strong>whenever possible</strong> at other Events. Participation in the meetings held is obligatory for all appointed TOs.",ref:"TCRR 7.2.5"},
+ {q:"What mix must each group of Technical Officials have?",a:"Members of each TO group must come from <strong>different countries</strong> and include <strong>both men and women</strong>.",ref:"TCRR 7.2.6"},
+ {q:"Where do the Centre and Side Referees sit?",a:"Centre Referee: <strong>400 cm</strong> from the platform (measured to the back edge of the table), in line with the platform centre. Side Referees: same line, <strong>300 to 400 cm</strong> from the Centre Referee. The Reserve Referee sits in a designated area on the FOP.",ref:"TCRR 3.1.2.2"},
+ {q:"Where does the Jury Table go?",a:"A <strong>maximum of 1,000 cm</strong> from the centre of the platform, <strong>between the Centre and Side Referees’ Tables</strong>, on the side of the athletes’ point of entry, with a clear view of the platform and stage.",ref:"TCRR 3.1.2.1"},
+ {q:"A referee’s view of the lift is blocked. What may they do?",a:"Move to a position where the lift can be observed correctly, <strong>taking the small red and white flags</strong> so they can give the decision when the lift is complete. <em>A visually impaired athlete may have a coach or guide help them into the start position; the guide must leave the platform before the lift starts.</em>",ref:"TCRR 7.7.4"},
+ {q:"Who loads the bar, and what is mandatory after every attempt?",a:"<strong>Loaders</strong> load as directed by the Speaker and clean under the Technical Controller. The bar must be <strong>disinfected after each attempt</strong>, and loaders wear gloves when cleaning.",ref:"Reg. to TCRR 7.14"},
+ {q:"List the Technical Controller's duties on uniform, passes and the FOP.",a:"<ul><li>Assist the Competition Director and <strong>Chair of the Jury</strong> in supervising the competition</li><li>Ensure all on-duty <strong>TOs wear the correct uniform</strong>; report non-compliant TOs to the Chair</li><li>Inspect <strong>accreditation and warm-up passes</strong> and athlete outfits before the start</li><li>Ensure only <strong>authorised Team Officials</strong> accompany athletes on the FOP; team communication goes through the <strong>Lead Coach</strong></li></ul>",ref:"TCRR 7.8.1, 7.8.4–7.8.6"},
+ {q:"Who is a team's point of contact with TOs on the FOP, and how are passes marked?",a:"The <strong>Lead Coach</strong>, the Member Federation's primary contact. The <strong>Lead Coach Pass</strong> is a different colour from Athlete and Support passes; <strong>Support Coach Passes</strong> identify the holder as “Support”. Passes show <strong>gender, bodyweight category and group</strong> and are valid only for that group.",ref:"TCRR 3.3.5.3; Reg. to 3.3.5"},
+ {q:"Where does the Reserve Referee sit, and who calls on them?",a:"At a <strong>designated space on the FOP</strong>, ready to be called upon by the <strong>Chair of the Jury</strong>.",ref:"TCRR 7.7.10"},
+ {q:"Who does the Timekeeper work in close cooperation with?",a:"Both the <strong>Speaker</strong> and the <strong>Chair of the Jury</strong>.",ref:"TCRR 7.10.8"},
+]},
+jury:{lv:"IWF Rules",nm:"Jury & VPT",bl:"Reversals, challenges, Jury powers",cards:[
+ {q:"What category must every Jury member hold at an IWF Event?",a:"<strong>Category 1.</strong> <em>The older Cat 1 or Cat 2 wording is out of date.</em>",ref:"TCRR 7.5.2"},
+ {q:"How large is the Jury at an Olympic Qualification Event?",a:"<strong>Four (4) members</strong>, one of whom is the <strong>Chair</strong>. <strong>One Reserve</strong> Jury member may also be appointed; the Reserve sits in a designated FOP space and joins the table only to replace a member.",ref:"TCRR 7.5.3 / 7.5.12",upd:1},
+ {q:"With VPT in use, who votes and when does a review start?",a:"A <strong>seven-member Adjudication Panel</strong>: <strong>4 Jury members + 3 Referees</strong>. If the <strong>combined majority is opposite</strong> to the Referees’ call, the system automatically shows <strong>“Adjudication Panel Review”</strong>, stops the competition and starts VPT. If the Jury splits <strong>2–2</strong>, the Referees’ decision stands with no review.",ref:"TCRR 7.5.7 / 7.5.10",upd:1},
+ {q:"Without VPT, what does it take for the Jury to reverse the Referees?",a:"The four-member Jury may call the Referees to explain. Reversal requires a <strong>unanimous</strong> Jury.",ref:"TCRR 7.5.7"},
+ {q:"Walk through what happens when the Jury disagrees with a referee call (VPT not in use).",a:"<ul><li>The Referees are called for an <strong>explanation</strong></li><li>Explanation <strong>accepted</strong> and Jury unanimous → no action</li><li>Not accepted and Jury unanimous → decision <strong>reversed</strong></li><li>The decision and reason reach the <strong>Speaker</strong>, the athlete or Team Official, and the Marshal through the Technical Controller (or another TO), and are announced</li></ul>",ref:"TCRR 7.5.7"},
+ {q:"Where is VPT mandatory?",a:"<strong>World Senior, Junior and Youth Championships, Olympic and Youth Olympic Games, Continental and Regional Championships</strong>, and any other World or Continental Event assigned as an <strong>Olympic Qualification Event</strong>.",ref:"TCRR 3.3.7.2",upd:1},
+ {q:"How many Challenge Cards does each athlete get, and what can it challenge?",a:"<strong>One per athlete</strong>, issued at weigh-in, for the athlete's <strong>own attempts only</strong>. It can be used <strong>once</strong>, and <strong>only if the lift has not already been reviewed</strong> by the Adjudication Panel. If the challenge <strong>changes the decision in the athlete's favour</strong>, the athlete <strong>keeps the card</strong>.",ref:"Reg. to TCRR 3.3.7 §9; IWF Adjudication Process 2026",upd:1},
+ {q:"When is a challenge too late?",a:"Only when <strong>both</strong> are true: the <strong>clock has started for the next attempt</strong> <strong>and</strong> the called athlete is <strong>on the stage</strong>. The deadline is whichever of the two comes <strong>last</strong>. The card goes to the <strong>nearest Technical Controller</strong>, who stops the competition at once.",ref:"Reg. to TCRR 3.3.7 §4, §9.3–9.4"},
+ {q:"Does the Chair of the Jury need a yellow flag to start a VPT review?",a:"<strong>No.</strong> No yellow flag is required. The system starts the review automatically when the combined panel majority opposes the Referees; otherwise a valid <strong>Challenge</strong> triggers it. <strong>Only the Jury controls playback</strong>, and it must check the challenge is valid first.",ref:"TCRR 7.5.7 / 7.5.10; Reg. to 3.3.7 §4–§6",upd:1},
+ {q:"How does a VPT review end, and can it be challenged again?",a:"Referees and Jury review the replay together, with <strong>no limit on replays</strong>. The Chair of the Jury then calls for a new decision and the <strong>majority of all seven</strong> decides. The result is <strong>final</strong>, appears on the scoreboard with the <strong>rule(s) cited</strong> for a No Lift, and <strong>cannot be challenged further</strong>.",ref:"TCRR 7.5.7; Reg. to 3.3.7 §7–§9.7",upd:1},
+ {q:"Can the Jury replace a Technical Official mid-competition?",a:"Yes. <strong>After a first warning</strong>, the Jury may by <strong>unanimous vote</strong> replace any TO whose decisions prove them incompetent.",ref:"TCRR 7.5.5"},
+ {q:"Is there an appeal against the Referees’ or Adjudication Panel’s decision?",a:"<strong>No</strong>, except the <strong>Challenge procedure</strong>. The Jury can reprimand or sanction an athlete or Team Official for misconduct in the FOP. Where it threatens a TO or IWF personnel, the Chair of the Jury acts with the IWF President, General Secretary or Competition Director.",ref:"TCRR 7.5.9",upd:1},
+ {q:"What conduct rule applies among Jury members?",a:"Jury members must <strong>not influence or attempt to influence</strong> each other’s decisions. <em>The impartiality of all TOs is not to be doubted. Errors can happen involuntarily, and a TO may explain a decision to the Jury.</em>",ref:"TCRR 7.5.6 / 7.5.8"},
+ {q:"The loading is disrupted mid-lift, or the Speaker calls the wrong weight. Who acts?",a:"The <strong>Jury must grant another attempt</strong> when the loading, platform or barbell is disrupted during a lift, or after a <strong>serious loading or calling error</strong>.",ref:"TCRR 7.5.15 / 7.5.17"},
+ {q:"What paperwork does the Chair of the Jury own?",a:"<ul><li>Controls and <strong>signs all TO Cards</strong></li><li>Ensures a <strong>manual back-up Protocol</strong> exists</li><li><strong>Signs the final Protocol</strong></li></ul>",ref:"TCRR 7.5.18–7.5.20"},
+ {q:"Can a B-group athlete be moved into the A group?",a:"Yes. The Chair of the Jury must <strong>assess the need to recall B-group (or other group) athletes</strong> to the A group if they are considered <strong>medal prospects</strong>.",ref:"TCRR 7.5.14"},
+ {q:"When do the Jury’s decision lights show, and is there a change window?",a:"Each Jury member presses red or white, and a <strong>green light</strong> shows they have voted. The white and red Jury lights appear only <strong>when all members have voted</strong>. The Jury unit has <strong>no 3-second change window</strong>. Jury members adjudicate once the athlete has <strong>replaced the barbell</strong>.",ref:"Reg. to 3.3.6.12; TCRR 7.5.8"},
+ {q:"The bar is loaded lighter or heavier than requested. What are the athlete’s options?",a:"<ul><li><strong>Lighter</strong>: accept if the lift was good (and a multiple of 1 kg), or refuse and get an additional attempt at the requested weight</li><li><strong>Heavier</strong>: accept if good (multiple of 1 kg); if missed, an additional attempt at the requested weight is <strong>automatic</strong></li><li><strong>Not a multiple of 1 kg</strong> and good: accept the next lower whole kg, or refuse for an additional attempt</li><li>Requested +1 kg on a 2nd or 3rd attempt but loaded only +0.5 kg: additional attempt <strong>automatic</strong></li></ul>",ref:"Reg. to TCRR 7.5"},
+ {q:"What may the Jury put in writing during an Event?",a:"After observing the TOs, Jury members <strong>may highlight special occurrences by written report</strong>. The Chair of the Jury <strong>may deliver</strong> the reports to the Technical Committee Chairperson, the IWF President and/or the IWF General Secretary.",ref:"TCRR 7.5.4"},
+ {q:"How does the Jury monitor the Referees, and how does it call one to the Jury Table?",a:"Through a <strong>control panel</strong> whose lights show every Referee decision instantly, so slow, fast or missing decisions can be identified. The <strong>Chair of the Jury</strong> presses a button that gives an <strong>audible signal</strong> to the Referee(s) concerned.",ref:"TCRR 3.3.6.11"},
+ {q:"How many of the 7 votes decide a lift, and what does the scoreboard show?",a:"<strong>4 or more White = Good Lift</strong>; <strong>4 or more Red = No Lift</strong>. The simple majority (<strong>4/7</strong>) is final and is displayed on the official scoreboard.",ref:"IWF Adjudication Process 2026 (infographic)"},
+ {q:"What are the five steps of a regular lift's adjudication, before any review?",a:"<ol><li>Lift is performed</li><li><strong>3 Referees</strong> give the initial decision (3–0 or 2–1)</li><li><strong>4 Jury members</strong> give their own White/Red decisions on the Jury Control Unit</li><li>The system <strong>combines all 7</strong> decisions</li><li>If the combined majority is <strong>opposite</strong> to the Referees, the system shows <strong>Adjudication Panel Review</strong> and stops the competition</li></ol>",ref:"IWF Adjudication Process 2026 (infographic)"},
+ {q:"What does “Referee result” mean in the adjudication tables, and what is the “first vote”?",a:"The Referee result is the <strong>first decision by the three Referees</strong>. Automatic VPT is judged on the <strong>complete first vote only</strong> (3 Referees + 4 Jury). <strong>VPT means review, not an automatic reversal</strong> of the result.",ref:"IWF Adjudication Process 2026 (infographic)"},
+ {q:"How many of the 20 possible Referee/Jury combinations trigger VPT?",a:"<strong>6 of 20</strong> (4 Referee outcomes × 5 Jury outcomes). Each is a case where the <strong>combined 7-vote majority is opposite</strong> to the Referees' result.",ref:"IWF Adjudication Process 2026 (infographic)"},
+ {q:"Referees: 3–0 Good Lift. Which Jury votes force VPT?",a:"<strong>Only 0W/4R</strong> (all four Jury members Red): panel is <strong>3W/4R, No Lift</strong>. Jury 1W/3R still gives <strong>4W/3R</strong>, Good Lift, <strong>no VPT</strong>.",ref:"IWF Adjudication Process 2026 (infographic)"},
+ {q:"Referees: 2–1 Good Lift. Which Jury votes force VPT, and which don't?",a:"<strong>VPT:</strong> Jury <strong>1W/3R</strong> (panel 3W/4R) and <strong>0W/4R</strong> (2W/5R), both No Lift. <strong>No VPT:</strong> Jury <strong>2W/2R</strong> gives 4W/3R, still a Good Lift.",ref:"IWF Adjudication Process 2026 (infographic)"},
+ {q:"Referees: 2–1 No Lift (1 White, 2 Red). Which Jury votes force VPT?",a:"<strong>VPT:</strong> Jury <strong>4W/0R</strong> (panel 5W/2R) and <strong>3W/1R</strong> (4W/3R), both Good Lift. <strong>No VPT:</strong> Jury 2W/2R gives <strong>3W/4R</strong>, still No Lift.",ref:"IWF Adjudication Process 2026 (infographic)"},
+ {q:"Referees: 3–0 No Lift. Which Jury votes force VPT?",a:"<strong>Only 4W/0R</strong>: panel is <strong>4W/3R, Good Lift</strong>. Jury 3W/1R gives 3W/4R, still No Lift, <strong>no VPT</strong>.",ref:"IWF Adjudication Process 2026 (infographic)"},
+ {q:"Rule of thumb: how many Jury members must oppose the Referees to trigger VPT?",a:"Against a <strong>unanimous (3–0)</strong> Referee call, <strong>all four</strong> Jury members must oppose. Against a <strong>split (2–1)</strong> call, <strong>at least three of four</strong> must oppose. A <strong>2–2 Jury split never</strong> triggers VPT.",ref:"IWF Adjudication Process 2026 (infographic)"},
+ {q:"After the Video Playback Review, who presses the Referee call button, and who then votes?",a:"The <strong>Chair of the Jury</strong> presses the Referee call button. <strong>All 7</strong> voting officials (3 Referees + 4 Jury members) give a <strong>new White/Red decision</strong>; <strong>4 or more</strong> of the same colour decides.",ref:"IWF Adjudication Process 2026 (infographic)"},
+ {q:"Walk through the Challenge procedure from the Challenge Card to the final decision.",a:"<ol><li>Athlete/team submits a valid Challenge Card (<strong>own attempt only</strong>)</li><li>Has the panel <strong>already reviewed</strong> this lift? <strong>Yes → challenge not permitted</strong> and the decision cannot be challenged again</li><li><strong>No → valid</strong>, VPT starts automatically</li><li>Same procedure as a panel review: 7 officials review, the Chair presses the call button, all 7 vote anew</li><li><strong>4/7 is final</strong>; if it changes in the athlete's favour, the card is <strong>retained</strong></li></ol>",ref:"IWF Adjudication Process 2026 (infographic)"},
+ {q:"Drill: Referees 2–1 Good Lift, Jury 2W/2R. VPT? Final result?",a:"<strong>No VPT.</strong> Combined 4W/3R: <strong>Good Lift</strong> by majority.",ref:"IWF Adjudication Process 2026 (infographic)"},
+ {q:"Drill: Referees 1–2 (No Lift), Jury 4W/0R. VPT? Combined count?",a:"<strong>VPT required.</strong> Combined <strong>5W/2R</strong> favours a Good Lift, opposite to the Referees' No Lift.",ref:"IWF Adjudication Process 2026 (infographic)"},
+ {q:"Drill: Referees 0–3 (No Lift), Jury 3W/1R. VPT?",a:"<strong>No VPT.</strong> Combined <strong>3W/4R</strong>: the panel agrees it is a No Lift.",ref:"IWF Adjudication Process 2026 (infographic)"},
+]},
+lifts:{lv:"IWF Rules",nm:"Lifts & Outfit",bl:"No-lift calls and kit checks, IWF version",cards:[
+ {q:"Athlete touches the barbell with their shoe on the platform. IWF ruling?",a:"<ul><li><strong>Before the attempt:</strong> the Referees must press <strong>red</strong></li><li><strong>After a successful attempt:</strong> the decision is <strong>not reversed</strong>, but the Jury gives a <strong>warning</strong>; a repeat on a later lift is a <strong>No Lift</strong></li></ul> <em>Switch off the USAW habit: domestically, touching the barbell with footwear at any time on the platform is a No Lift.</em>",ref:"TCRR 2.5.1.11",upd:1},
+ {q:"Define “pulling from the hang.”",a:"<strong>Stopping the upward movement of the barbell during the pull.</strong> No Lift in all lifts.",ref:"TCRR 2.5.1.1"},
+ {q:"Name some no-lift faults that apply to every lift.",a:"<ul><li>Pulling from the hang</li><li><strong>Pause during the extension of the arms</strong></li><li>Finishing with a <strong>press-out</strong></li><li><strong>Dropping the barbell from above the shoulders</strong></li></ul>",ref:"TCRR 2.5.1"},
+ {q:"The bar reaches knee height, then the athlete lowers it. Ruling?",a:"<strong>No Lift.</strong> Any unfinished attempt where the bar reached the knees counts. Below the knees, it is not an attempt and the clock restarts.",ref:"TCRR 2.4.2 / 7.10.6"},
+ {q:"Snatch-specific incorrect movement?",a:"<strong>Pause during the lifting of the barbell.</strong>",ref:"TCRR 2.5.2.1"},
+ {q:"Clean-specific incorrect movements?",a:"<ul><li><strong>Resting or placing the bar on the chest</strong> at an intermediate point before its final position (a “double clean” or “dirty clean”)</li><li>Touching the <strong>thighs or knees with the elbows or upper arms</strong></li></ul>",ref:"TCRR 2.5.3"},
+ {q:"Jerk-specific incorrect movements?",a:"<ul><li><strong>Any apparent effort to jerk that is not completed</strong>, including lowering the body or bending the knees</li><li><strong>Deliberate oscillation</strong> of the barbell to gain advantage</li></ul>",ref:"TCRR 2.5.4"},
+ {q:"What must the athlete show between the Clean and the Jerk?",a:"They must become <strong>motionless with the knees fully extended</strong> before starting the Jerk.",ref:"TCRR 2.3.2"},
+ {q:"Chalk, talc, water on the thighs: which are allowed?",a:"<strong>Chalk</strong> (magnesium carbonate) only. <strong>Grease, oil, water, talcum, cream</strong> or any lubricant on the thighs is forbidden. The athlete must remove it at once, and if the clock is running during removal, <strong>the clock keeps running</strong>.",ref:"TCRR 2.4.6–2.4.7"},
+ {q:"How close to the elbow may bandages or tape sit?",a:"Not within the <strong>10 cm elbow area</strong>: <strong>5 cm above and 5 cm below</strong> the elbow.",ref:"TCRR 4.5.1.6 / 4.5.3.4"},
+ {q:"Belt rules?",a:"Maximum width <strong>12 cm</strong>, worn <strong>outside the costume</strong>.",ref:"TCRR 4.4"},
+ {q:"What may be worn under the costume?",a:"<ul><li><strong>One unitard</strong>: one or two pieces, tight, collarless, one colour, no pattern; may cover elbows and knees</li><li><strong>One T-shirt</strong>: collarless, must <strong>not cover the elbows</strong></li><li><strong>One pair of shorts</strong>: tight, not longer than the costume, <strong>not covering the knees</strong></li></ul>",ref:"TCRR 4.7.1–4.7.3"},
+ {q:"Costume requirements?",a:"<strong>One piece, collarless</strong>, must not cover the elbows or knees, <strong>any colour</strong>. A T-shirt and shorts <strong>cannot replace</strong> the costume.",ref:"TCRR 4.2.1 / 4.7.4"},
+ {q:"Are headgear and religious headgear permitted? How are they treated?",a:"Both are <strong>permitted</strong>. Hair and any items on the head are considered <strong>part of the head</strong>.",ref:"TCRR 4.1.2 / 4.7.5"},
+ {q:"An athlete walks out with a phone tucked in the singlet strap. Ruling?",a:"Personal electronic equipment, including <strong>mobile phones</strong>, is <strong>forbidden on the competition platform and stage</strong>. Medical equipment such as a hearing aid is the exception, and personal devices may be used in the warm-up area.",ref:"TCRR 4.8.1"},
+ {q:"Platform size and height, bar weights, collar weight?",a:"Platform <strong>4 m × 4 m, 10 cm</strong> high. Men’s bar <strong>20 kg</strong>, women’s <strong>15 kg</strong>. Collars <strong>2.5 kg each</strong>. Rim diameter max <strong>8.5 cm (men) / 8 cm (women)</strong>.",ref:"TCRR 3.3.2–3.3.3; Reg. to 3.3.3 §4–5"},
+ {q:"Disc colours, big and small?",a:"25 <strong>red</strong> · 20 <strong>blue</strong> · 15 <strong>yellow</strong> · 10 <strong>green</strong> · 5 <strong>white</strong>; change discs repeat the pattern: 2.5 red · 2 blue · 1.5 yellow · 1 green · 0.5 white. Discs 10 kg and up are <strong>45 cm</strong> in diameter.",ref:"TCRR 3.3.3.6"},
+ {q:"Name the position and platform faults that make a lift a No Lift.",a:"<ul><li>Touching the platform with <strong>anything other than the feet</strong></li><li><strong>Leaving the platform</strong>, or touching the area outside it, before the lift is complete</li><li><strong>Not facing the Centre Referee</strong> at the start</li><li><strong>Releasing the barbell from an incomplete position</strong></li><li><strong>Failing to replace the complete barbell</strong> on the platform</li></ul>",ref:"TCRR 2.5.1.2, 2.5.1.6, 2.5.1.8–2.5.1.10"},
+ {q:"Which incomplete movements and positions make a lift a No Lift?",a:"<ul><li><strong>Uneven or incomplete extension</strong> of the arms at completion</li><li>Feet and barbell <strong>not in line</strong> and parallel to the plane of the trunk</li><li><strong>Knees not fully extended</strong> at completion</li></ul>",ref:"TCRR 2.6.1–2.6.3"},
+ {q:"What four adjustments may the athlete make to the bar before the Jerk?",a:"To <strong>unhook the thumbs</strong>, if <strong>breathing is impeded</strong>, if the bar <strong>causes pain</strong>, or to <strong>change grip width</strong>. None of these counts as an additional attempt at the Jerk.",ref:"TCRR 2.3.2"},
+ {q:"Define a press-out.",a:"<strong>Continuing the extension of the arms after the athlete has reached the lowest point</strong> of the squat or split, in both the Snatch and the Jerk. <em>Pausing during arm extension and bending then re-extending the elbows during recovery are separate faults.</em>",ref:"TCRR 2.5.1.4"},
+ {q:"An athlete cannot fully extend an elbow. What must they do under IWF rules?",a:"<strong>Report or display it to all on-duty Referees and the Jury before the competition starts</strong>, and they may remind them before each lift on the platform. It is the <strong>athlete’s sole responsibility</strong>. The Jury may call the Competition Doctor to examine it. <em>USAW habit: pointing before each attempt is the domestic standard.</em>",ref:"TCRR 2.4.4"},
+ {q:"May an athlete rock in the bottom of a squat to recover?",a:"<strong>Yes.</strong> When snatching or cleaning in the squat style, the athlete may assist recovery by swinging or rocking while in the squat position.",ref:"TCRR 2.4.5"},
+ {q:"How must the barbell be lowered, and when may the grip be released?",a:"Lowered <strong>in front of the body</strong> after the “Down” signal. The grip is released only once the bar has <strong>passed the level of the shoulders</strong>.",ref:"TCRR 2.4.3"},
+ {q:"How is the bar loaded, and who decides on the small discs?",a:"Heaviest discs first, then lighter discs in <strong>descending order</strong> toward the outer edge, secured by collars. Referees and Jury must be able to <strong>identify each disc’s weight</strong>. The <strong>Jury decides</strong> whether the small discs (2, 1.5, 1 and 0.5 kg) go inside or outside the collars.",ref:"TCRR 3.3.3.11; 7.5.16"},
+ {q:"Prosthetic limbs and weigh-in: what applies?",a:"<strong>Prosthetic limbs are permitted</strong> if not powered or able to store energy that is released during the lift. Athletes with a prosthesis are <strong>weighed wearing it</strong>, and that weight is their bodyweight.",ref:"TCRR 10.3; Reg. to 6.4 §11"},
+]},
+proc:{lv:"IWF Rules",nm:"Competition Procedure",bl:"Entries to medals",cards:[
+ {q:"Which bodyweight categories apply at IWF Senior events?",a:"The standard tables now printed in the 2026 TCRR (in force <strong>from 01 August 2026</strong>).<br>Men: <strong>60, 65, 70, 75, 85, 95, 110, +110</strong><br>Women: <strong>49, 53, 57, 61, 69, 77, 86, +86</strong>",ref:"TCRR 1.2.1–1.2.2"},
+ {q:"When are Final Entries due?",a:"<strong>14 days before the Technical Congress.</strong> Athletes not on the Final Entry Form cannot take part. (Preliminary: 60 days, or 90 for Worlds.)",ref:"TCRR 6.1.3–6.1.7"},
+ {q:"What can a team change at the Verification of Final Entries, and what can't it?",a:"Can correct <strong>name spelling, date of birth, bodyweight category and Entry Total</strong>. <strong>No substitutions.</strong> A passport copy is required for each athlete.",ref:"TCRR 6.2.2–6.2.4"},
+ {q:"Max athletes per nation after verification, and what is the exception?",a:"Normally <strong>8 men and 8 women</strong> (or the number of categories, if fewer), <strong>no more than 2 per category</strong>. <strong>Exception:</strong> events where the Event Regulation sets <strong>no limit</strong> per federation or category, such as <strong>IWF Qualifiers</strong>. Check the Event Regulation.",ref:"TCRR 6.2.5 / 1.2.7 / 3.4.3.2",upd:1},
+ {q:"What does the lot number decide?",a:"The <strong>order of weigh-in</strong> and the <strong>order of lifting</strong> within the group.",ref:"TCRR 6.3.1"},
+ {q:"Maximum group size, and how are equal Entry Totals split between groups?",a:"<strong>18 athletes</strong> per group. Equal Entry Totals are split by lot number, <strong>lower lot to Group A</strong>.",ref:"TCRR 6.3.2–6.3.3"},
+ {q:"When does weigh-in start and how long does it last?",a:"<strong>3 hours before</strong> the group starts; it lasts <strong>1 hour</strong>.",ref:"TCRR 6.4.1",upd:1},
+ {q:"What allowance applies at the scale?",a:"<ul><li>Athletes weigh in <strong>in the costume they will compete in</strong>, no shoes or socks</li><li>Reading <strong>250 g or more over</strong> the entered category: <strong>250 g is deducted</strong>; if still heavier, <strong>shed the rest</strong></li><li>Reading <strong>at or under</strong> the entered category: 250 g is deducted too, so the athlete <strong>may no longer be entitled</strong> to that category unless they gain the weight back before weigh-in ends</li><li>Not making weight in time: <strong>eliminated</strong>, though still entitled to accredited-participant privileges</li></ul>",ref:"Reg. to 6.4 §10, §15",upd:1},
+ {q:"State the 20 kg Rule.",a:"The sum of the <strong>starting attempts</strong> in Snatch and C&amp;J must <strong>equal or exceed the verified Entry Total minus 20 kg</strong>. Referees and the Competition Secretary check it at weigh-in; then the Chief Marshal and Assistants, the TC in the warm-up area, Competition Management operators, the CD and the Jury supervise it.",ref:"TCRR 6.6.5; Reg. to 6.6.5 §3"},
+ {q:"Entry Total 260 kg. First attempts declared: Snatch 105, C&J 130. OK?",a:"<strong>No.</strong> 105 + 130 = 235, which is under 260 − 20 = <strong>240</strong>. The declarations must come up by at least 5 kg.",ref:"TCRR 6.6.5"},
+ {q:"In what order are athletes introduced, and what do TOs do at their introduction?",a:"Athletes in <strong>start-number order</strong>. TOs are introduced and <strong>hand their TO Cards to the Chair of the Jury</strong>.",ref:"TCRR 6.5.2–6.5.3"},
+ {q:"Rank the calling-order tiebreakers.",a:"<ul><li>1. <strong>Lightest weight</strong></li><li>2. <strong>Lowest attempt number</strong></li><li>3. Who <strong>lifted earlier</strong> in the previous sequence</li><li>4. <strong>Lowest start number</strong></li></ul>",ref:"TCRR 6.6.6"},
+ {q:"Automatic increment after a good lift, and after a miss?",a:"<strong>+1 kg</strong> after a good lift; <strong>same weight</strong> after a miss.",ref:"TCRR 6.6.3"},
+ {q:"1 minute or 2 minutes?",a:"<strong>60 s</strong> per attempt; <strong>120 s</strong> when following yourself. If the calling order changes in between, only <strong>60 s</strong>.",ref:"TCRR 6.6.7–6.6.8"},
+ {q:"When does the clock start?",a:"When the Speaker finishes the announcement, <strong>or</strong> when the bar is loaded and loaders have left the platform, <strong>whichever is later</strong>.",ref:"TCRR 6.6.7"},
+ {q:"What is the “final call”?",a:"The timing-clock signal <strong>30 seconds before the end</strong> of the allocated time.",ref:"TCRR 6.6.11"},
+ {q:"Deadlines to increase vs. decrease a weight?",a:"<strong>Increase:</strong> sign the Athlete's Card <strong>before the final call</strong>. <strong>Decrease:</strong> only if the <strong>clock has not started</strong> for that athlete.",ref:"TCRR 6.6.10"},
+ {q:"How many changes does a signed declaration allow, and what if it isn't signed?",a:"<strong>Two changes.</strong> Unsigned before the final call → the athlete is called at the <strong>automatic progression</strong>. For consecutive attempts, declare within the <strong>first 30 seconds</strong>.",ref:"TCRR 6.6.12"},
+ {q:"A heavier weight is requested while the clock runs. What happens to the clock?",a:"It <strong>stops during the change</strong> and resumes afterward.",ref:"TCRR 6.6.13"},
+ {q:"Break after the Snatch?",a:"<strong>10 minutes</strong>. The Jury, with the CD/TD, may shorten or lengthen it.",ref:"TCRR 6.7"},
+ {q:"Which medals are awarded at IWF Events?",a:"<strong>Snatch, Clean &amp; Jerk and Total</strong>, gold/silver/bronze each.",ref:"TCRR 6.8.1"},
+ {q:"Equal Snatch results. Who ranks higher?",a:"The athlete who <strong>achieved the result first</strong> in the calling order.",ref:"TCRR 6.8.2"},
+ {q:"Equal Totals. Who ranks higher?",a:"The athlete who <strong>achieved the Total first</strong>, i.e. whose deciding Clean &amp; Jerk came <strong>earlier in the calling order</strong>. Across groups, the athlete in the <strong>earlier group</strong> ranks higher.",ref:"TCRR 6.8.2"},
+ {q:"When is a Victory Ceremony held, and what do officials wear?",a:"At the <strong>end of each bodyweight category</strong>. Jackets and ties/scarves <strong>must be worn</strong>, even if removed earlier.",ref:"TCRR 6.9.1 / 7.2.3"},
+ {q:"Who must be in the weigh-in room, and who may attend the athlete?",a:"The Weigh-in Secretariat is the <strong>Competition Secretary</strong> and the <strong>on-duty Referees</strong> (plus optional assistants). Each athlete is weighed in front of <strong>two Referees, both the same gender as the athlete</strong>. <strong>One</strong> authorised Team Official may accompany them; if of a different gender, they stay <strong>outside the scale area</strong>.",ref:"Reg. to 6.4 §2, §3, §5"},
+ {q:"How is bodyweight recorded, and what does the athlete sign at weigh-in?",a:"Both Referees verify the weight and give it to the Competition Secretary on a note or printout; it is recorded <strong>exactly as written or printed</strong>. The athlete or Team Official <strong>signs the Athlete’s Card</strong> to confirm bodyweight and <strong>declare the starting attempts</strong>. Later changes to starting attempts count toward the <strong>two allowed weight changes</strong>.",ref:"Reg. to 6.4 §4, §6, §16; TCRR 6.6.10"},
+ {q:"How are start numbers assigned?",a:"After weigh-in, the <strong>lowest lot number gets start number 1</strong> and the rest follow in lot order. With combined categories it goes category by category, <strong>lower category first</strong>. Bibs go out at the latest <strong>30 minutes before</strong> the competition.",ref:"Reg. to 6.4 §21"},
+ {q:"An athlete is over or under on the first weigh. What can they do?",a:"Return to the weigh-in room <strong>as many times as needed</strong> before the period ends, without following lot order. An athlete already within their category is weighed <strong>only once</strong>. An athlete not present when called is weighed <strong>at the end</strong> of the sequence.",ref:"Reg. to 6.4 §7, §14"},
+ {q:"In what order do groups compete, and what can run at the same time?",a:"<strong>Reverse alphabetical</strong>: Group C first, Group B second, Group A last. With several platforms, only groups of <strong>different bodyweight categories</strong> may run at the same time.",ref:"Reg. to 6.6.6"},
+ {q:"What are the minimum starting weights?",a:"Men <strong>26 kg</strong> (20 kg bar, collars and two 0.5 kg discs). Women <strong>21 kg</strong> (15 kg bar, collars and two 0.5 kg discs).",ref:"TCRR 6.6.4"},
+ {q:"What happens if a 20 kg Rule breach goes unnoticed?",a:"<ul><li>Refusal to comply with the Jury or a designated TO: <strong>eliminated</strong></li><li>Noticed after lifts are taken: non-compliant <strong>Clean &amp; Jerk attempts become No Lift</strong>; the athlete nominates a compliant weight within their three attempts, with <strong>no extra attempts</strong></li><li>Noticed only at the end: the <strong>Total is invalid</strong> and deleted from the results by the Jury</li></ul>",ref:"Reg. to 6.6.5 §6–§8"},
+ {q:"What audible signals does the timing clock give?",a:"Automatic signals at <strong>90 seconds</strong>, <strong>30 seconds</strong> and <strong>zero</strong>. It counts down in <strong>1-second steps</strong> and must show elapsed time in <strong>three places</strong>: the warm-up area, facing the audience, and facing the athlete.",ref:"Reg. to 3.3.6.14"},
+ {q:"An athlete misses all three Snatches. Do they continue?",a:"<strong>Yes</strong>, at IWF Events with medals for Snatch, Clean &amp; Jerk and Total. They may lift the Clean &amp; Jerk and earn <strong>team points for it</strong>, but get <strong>no Total</strong> and no Total points. In <strong>Total-only</strong> events they are eliminated. Check the Event Regulation.",ref:"TCRR 6.8.1 / 6.8.6 / 6.8.8"},
+ {q:"How are team points scored?",a:"Points per place in the <strong>Snatch, Clean &amp; Jerk and Total</strong>: 1st 28, 2nd 25, 3rd 23, 4th 22, then one point less per place down to 25th = 1. Teams level on points: the team with <strong>more of the higher places</strong> ranks higher.",ref:"TCRR 6.8.3–6.8.5"},
+ {q:"What makes a record, and when is it ratified?",a:"A lift that exceeds the previous record by <strong>at least 1 kg</strong>. World, Continental and Regional records can only be set at IWF Events <strong>in the IWF Calendar</strong>. Records are <strong>ratified after the athlete passes doping control</strong>. If athletes tie on a new record, the one who <strong>lifted it first</strong> holds it.",ref:"TCRR 8.1 / 8.6 / 8.11 / 8.12"},
+ {q:"In what order are Technical Officials introduced?",a:"Centre Referee, Side Referees, Reserve Referee, Chief Marshal, Timekeeper(s), Technical Controller(s), Competition Doctor(s), then the <strong>Chair of the Jury</strong> and Jury members. All are introduced in front of the platform <strong>except the Jury</strong>, who are introduced from the Jury Table. TOs wear the <strong>jacket</strong> and remove their accreditation.",ref:"Reg. to 6.5 §2, §4, §5"},
+ {q:"What is the maximum on the Final Entry Form?",a:"<strong>10 men and 10 women</strong> (or the number of categories plus 2, if fewer): the participating athletes <strong>plus 2 reserves per gender</strong>, noted as reserves. Only athletes from the Preliminary Entry Form may be included. <em>Same no-limit exception for events such as IWF Qualifiers.</em>",ref:"TCRR 3.4.2.3"},
+ {q:"An athlete weighs in within the entered category. What do they and their team officials receive?",a:"The athlete gets an <strong>Athlete Pass and a Challenge Card</strong>; team officials get <strong>Warm-up Passes</strong>. Per group: <strong>1 athlete → 3</strong> (1 Lead Coach + 2 Support); <strong>2 athletes → 4</strong> (1 Lead Coach + 2 Support + 1 extra of either); each <strong>additional athlete</strong> → +1 Lead Coach and +1 Support. The Competition Secretary records the Lead Coach for each group.",ref:"TCRR 6.4.2; Reg. to 6.4 §18"},
+ {q:"What does the Protocol contain, and who signs it?",a:"For each athlete: <strong>start number, lot number, name, date of birth, IWF/IOC code, bodyweight, all attempts in both lifts, Total, records</strong>. It is signed by the <strong>Chair of the Jury and/or Competition Director / TD</strong>.",ref:"TCRR 3.4.7.1"},
+]},
+conduct:{lv:"IWF Rules",nm:"Conduct & Event Standards",bl:"Impartiality, uniform, TO Card, qualifier standards",cards:[
+ {q:"A TO's National Federation has lifters at the event. What does the TCRR require of the official?",a:"Impartiality that “is not to be doubted.” Groups mix <strong>nations and genders</strong>, appointed TOs <strong>cannot be members of their national team</strong>, and TOs must <strong>not coach or assist</strong> any athlete.",ref:"TCRR 7.2.1 / 7.2.6 / 7.4.5 / 7.5.6"},
+ {q:"What is the uniform, and when may jackets come off?",a:"<strong>Navy (PMS 2767) jacket and trousers/skirt, white shirt, IWF tie or scarf</strong>, black dress shoes, IWF badges. Jacket and tie may be removed in heat <strong>only with the Chair of the Jury’s authorisation</strong>, and must be worn for <strong>introductions and Victory Ceremonies</strong>.",ref:"TCRR 7.2.3"},
+ {q:"What happens to an appointed TO who no-shows without valid notice?",a:"They may be <strong>excluded from selection for up to two years</strong>.",ref:"TCRR 7.4.6"},
+ {q:"What does a TO hand over at the start of the session, and to whom?",a:"Their <strong>TO Card</strong>, to the <strong>Chair of the Jury</strong>, after the introduction; it is retrieved at the end.",ref:"TCRR 7.2.8 / 7.5.18"},
+ {q:"What equipment and technology standards apply at an Olympic Qualification Event?",a:"Sport equipment in the competition and warm-up areas must be <strong>new and supplied by an IWF Official Supplier</strong>. The <strong>Technology and Information System (TIS)</strong> is obligatory, and so is <strong>VPT</strong>.",ref:"TCRR 3.3.1.3–3.3.1.4 / 3.3.7.2"},
+ {q:"What must organisers of an Olympic Qualification Event guarantee about entry?",a:"<strong>Unconditional entry</strong> to all participants from all eligible IWF Member Federations. Qualifiers are IWF's own events, run under IWF rules, regulations and policies.",ref:"TCRR 5.1.2; Reg. to 5.1"}
+]}
+};
+
+/* ---------- state ---------- */
+const KEY="iwfTOcards.v1";
+const REV=2; // bump when changed cards (flagged upd:1) should resurface as new
+let S={cards:{},day:"",dayCount:0};
+try{const raw=localStorage.getItem(KEY); if(raw) S=Object.assign(S,JSON.parse(raw));}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+const ALL=[];
+Object.entries(DECKS).forEach(([dk,d])=>d.cards.forEach((c,i)=>{c.id=dk+"-"+i;c.deck=dk;ALL.push(c);}));
+const box=c=>(S.cards[c.id]?.b)||0;           // 0 new, 1 missed, 2 learning, 3+ mastered
+const mastered=c=>box(c)>=3;
+/* cards changed in the TCRR 2026 update drop any progress recorded against the old wording */
+ALL.forEach(c=>{if(c.upd){const e=S.cards[c.id];if(e&&e.r!==REV)delete S.cards[c.id];}});
+const todayStr=()=>{const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();};
+if(S.day!==todayStr()){S.day=todayStr();S.dayCount=0;}
+
+const SESSION=20; /* cards per daily session */
+function target(){return ALL.some(c=>!mastered(c))?SESSION:0;}
+
+/* ---------- ui ---------- */
+const $=id=>document.getElementById(id);
+let mode={type:"deck",key:"fop"},queue=[],idx=0,flipped=false;
+
+function statusOf(c){const b=box(c);return b===0?["New","st-new"]:b===1?["Missed","st-miss"]:b===2?["Learning","st-learn"]:["Mastered","st-done"];}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function order(list){
+  const tier=c=>{const b=box(c);return b===1?0:b===0?1:b===2?2:3;};
+  return shuffle(list.slice()).sort((x,y)=>tier(x)-tier(y));
+}
+
+function renderHeader(){
+  const t=target(),m=ALL.filter(mastered).length,miss=ALL.filter(c=>box(c)===1).length;
+  $("tDone").innerHTML=`${S.dayCount} <small>/ ${t}</small>`;
+  $("tBar").style.width=(t?Math.min(100,S.dayCount/t*100):100)+"%";
+  $("mAll").innerHTML=`${m} <small>/ ${ALL.length}</small>`;
+  $("mBar").style.width=(m/ALL.length*100)+"%";
+  $("missCt").textContent=miss;
+  $("missBar").style.width=(miss/ALL.length*100)+"%";
+  $("planTxt").textContent=t
+    ? `${ALL.length-m} cards still to master. Each session is ${SESSION} cards, missed ones first, then new ones.`
+    : "Every card is mastered. Run today's session to keep them fresh.";
+}
+
+function renderDecks(){
+  const c=$("decks");c.innerHTML="";
+  Object.entries(DECKS).forEach(([k,d])=>{
+    const m=d.cards.filter(mastered).length;
+    const b=document.createElement("button");b.className="deck";
+    b.setAttribute("aria-pressed",String(mode.type==="deck"&&mode.key===k));
+    b.innerHTML=`<span class="lv">${d.lv}</span><span class="nm">${d.nm}</span><span class="bl">${d.bl}</span><span class="row"><span class="meter"><i style="width:${m/d.cards.length*100}%"></i></span><span>${m}/${d.cards.length}</span></span>`;
+    b.onclick=()=>{startDeck(k);$("study").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});};
+    c.appendChild(b);
+  });
+}
+
+function startDeck(k){mode={type:"deck",key:k};queue=order(DECKS[k].cards);idx=0;$("sTitle").textContent=DECKS[k].nm;renderDecks();renderCard();}
+function startToday(){
+  const n=SESSION;
+  const pool=order(ALL);
+  const notM=pool.filter(c=>!mastered(c)), m=pool.filter(mastered);
+  queue=notM.concat(m).slice(0,n);
+  mode={type:"today"};idx=0;$("sTitle").textContent="Today's session";renderDecks();renderCard();
+}
+
+function setFlip(v){
+  flipped=v;$("card").classList.toggle("flipped",v);
+  $("flipBtn").hidden=v;$("missBtn").hidden=!v;$("gotBtn").hidden=!v;
+}
+
+function renderCard(){
+  const area=$("cardArea");
+  if(idx>=queue.length){
+    area.innerHTML="";
+    const m=queue.filter(mastered).length;
+    const box_=document.createElement("div");box_.className="done";
+    box_.innerHTML=`<h3>Session complete</h3><p>${m} of ${queue.length} cards in this set are mastered. Cards you missed come back first next time.</p><button class="go" id="again">Run it again</button>`;
+    area.appendChild(box_);
+    $("again").onclick=()=>{rebuildCard();mode.type==="today"?startToday():startDeck(mode.key);};
+    $("ctrl").hidden=true;$("pos").textContent=`${queue.length} / ${queue.length}`;return;
+  }
+  if(!$("card")) rebuildCard();
+  $("ctrl").hidden=false;
+  const c=queue[idx],[st,cls]=statusOf(c);
+  const was=flipped;
+  setFlip(false);
+  $("fchips").innerHTML=`<span class="chip">${DECKS[c.deck].nm}</span><span class="chip ${cls}">${st}</span>${c.verify?'<span class="chip verify">Verify</span>':""}${c.upd&&!S.cards[c.id]?'<span class="chip upd">Updated</span>':""}`;
+  $("q").innerHTML=c.q;
+  const fillBack=()=>{if(queue[idx]!==c)return;$("a").innerHTML=c.a;$("ref").textContent=c.ref?"Ref: "+c.ref:"";};
+  if(was){$("a").innerHTML="";$("ref").textContent="";setTimeout(fillBack,320);}else fillBack();
+  $("pos").textContent=`${idx+1} / ${queue.length}`;
+  $("prev").disabled=idx===0;
+}
+let cardHTML="";
+function rebuildCard(){$("cardArea").innerHTML=cardHTML;bindCard();}
+function bindCard(){
+  const card=$("card");
+  card.onclick=()=>setFlip(!flipped);
+  card.onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();setFlip(!flipped);}};
+}
+
+function grade(ok){
+  if(idx>=queue.length)return;
+  const c=queue[idx],b=box(c);
+  S.cards[c.id]={b: ok?(b===0?2:Math.min(5,b+1)):1, t:Date.now(), r:REV};
+  if(S.day!==todayStr()){S.day=todayStr();S.dayCount=0;}
+  S.dayCount++;save();
+  idx++;renderHeader();renderDecks();renderCard();
+}
+
+$("flipBtn").onclick=()=>setFlip(true);
+$("missBtn").onclick=()=>grade(false);
+$("gotBtn").onclick=()=>grade(true);
+$("next").onclick=()=>{if(idx<queue.length){idx++;renderCard();}};
+$("prev").onclick=()=>{if(idx>0){idx--;renderCard();}};
+$("goToday").onclick=()=>{startToday();$("study").scrollIntoView({behavior:"smooth"});};
+
+function bindReset(){
+  $("resetBtn").onclick=()=>{
+    $("resetWrap").innerHTML=`<span>Clear all progress?</span><button class="link" id="rYes">Yes, reset</button><button class="link" id="rNo">Cancel</button>`;
+    $("rYes").onclick=()=>{S={cards:{},day:todayStr(),dayCount:0};save();restoreReset();renderHeader();mode.type==="today"?startToday():startDeck(mode.key);};
+    $("rNo").onclick=restoreReset;
+  };
+}
+function restoreReset(){$("resetWrap").innerHTML=`<button class="link" id="resetBtn">Reset my progress</button>`;bindReset();}
+bindReset();
+
+document.addEventListener("keydown",e=>{
+  if(e.target.closest&&e.target.closest("button")&&e.key===" ")return;
+  if(e.key===" "){e.preventDefault();if($("card"))setFlip(!flipped);}
+  else if(e.key==="1"&&flipped)grade(false);
+  else if(e.key==="2"&&flipped)grade(true);
+  else if(e.key==="ArrowRight"&&idx<queue.length){idx++;renderCard();}
+  else if(e.key==="ArrowLeft"&&idx>0){idx--;renderCard();}
+});
+
+cardHTML=$("cardArea").innerHTML;bindCard();
+renderHeader();startDeck("fop");
+setInterval(renderHeader,3600000);
+</script>
+
+</body></html>
